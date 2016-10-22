@@ -20,22 +20,22 @@
   "env": {
     "GMAIL_USERNAME": {
       "description": "Your Gmail address for sending mail.",
-      "value": "user@example.com",
+      "value": "reservasalacic.est@gmail.com",
       "required": false
     },
     "GMAIL_PASSWORD": {
       "description": "Your Gmail password for sending mail.",
-      "value": "changeme",
+      "value": "Adminreservasala2016",
       "required": false
     },
     "ADMIN_EMAIL": {
       "description": "The administrator's email address for signing in.",
-      "value": "user@example.com",
+      "value": "reservasalacic.est@gmail.com",
       "required": true
     },
     "ADMIN_PASSWORD": {
       "description": "The administrator's password for signing in.",
-      "value": "changeme",
+      "value": "Admin_reserva_sala22016",
       "required": true
     },
     "DOMAIN_NAME": {

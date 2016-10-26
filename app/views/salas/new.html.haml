@@ -1,0 +1,14 @@
+%h1 Criar Nova Sala
+
+= form_tag salas_path do
+
+  = label :sala, :nome, 'Nome'
+  = text_field :sala, 'nome'
+
+  = label :sala, :qtd_lugares, 'Quantidade de lugares'
+  = text_field :sala, :qtd_lugares, 'qtd_lugares'
+
+  = label :sala, :disponivel, 'Disponivel?'
+  = check_box :sala, :disponivel
+
+  = submit_tag 'Salvar'

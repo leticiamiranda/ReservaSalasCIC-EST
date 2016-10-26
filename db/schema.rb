@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161021143344) do
+ActiveRecord::Schema.define(version: 20161026212231) do
+
+  create_table "salas", force: :cascade do |t|
+    t.string   "nome"
+    t.integer  "qtd_lugares"
+    t.boolean  "disponivel"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "salas", ["nome"], name: "index_salas_on_nome", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

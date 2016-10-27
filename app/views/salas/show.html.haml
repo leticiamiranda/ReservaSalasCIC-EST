@@ -1,15 +1,15 @@
--# in app/views/movies/show.html.haml
+%p#notice= notice
 
-%h2 Detalhes #{@sala.nome}
-
-%ul#details
-  %li
-    Quantidade de lugares:
-    = @sala.qtd_lugares
-  %li
-    Disponivel:
-    = @sala.disponivel
+%p
+  %b Nome:
+  = @sala.nome
+%p
+  %b Qtd lugares:
+  = @sala.qtd_lugares
+%p
+  %b Disponivel:
+  = @sala.disponivel
 
 = link_to 'Edit', edit_sala_path(@sala)
-= button_to 'Delete', sala_path(@sala), :method => :delete, :confirm => 'Are you sure?'
-= link_to 'Voltar', salas_path
+\|
+= link_to 'Back', salas_path

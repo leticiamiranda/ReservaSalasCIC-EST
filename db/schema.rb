@@ -11,11 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027014707) do
+ActiveRecord::Schema.define(version: 20161027025355) do
 
   create_table "recursos", force: :cascade do |t|
     t.string   "nome"
     t.integer  "qtd"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reservas", force: :cascade do |t|
+    t.datetime "data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -27,8 +33,6 @@ ActiveRecord::Schema.define(version: 20161027014707) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
-
-  add_index "salas", ["nome"], name: "index_salas_on_nome", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

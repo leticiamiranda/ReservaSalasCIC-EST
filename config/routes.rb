@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :reservas
+  resources :salas
   resources :recursos
-  namespace :salas do
-   resources :salas
-   root to: 'salas#index'
-  end
-
+  
   namespace :admin do
     resources :users
     root to: "users#index"

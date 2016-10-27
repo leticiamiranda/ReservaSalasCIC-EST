@@ -1,28 +1,25 @@
--#  This file is app/views/movies/index.html.haml
-%h1 All Salas
+%h1 Listing salas
 
--#= form_tag movies_path, :method => :get, :id => 'ratings_form' do
--#  = hidden_field_tag "title_sort", true if @title_header
--#  = hidden_field_tag ":release_date_sort", true if @date_header
--#  Include:
--#  - @all_ratings.each do |rating|
--#    = rating
--#    = check_box_tag "ratings[#{rating}]", 'yes', @checked[rating], :id => "ratings_#{rating}"
--#  = submit_tag 'Refresh', :id => 'ratings_submit'
-
-%table#salas
+%table
   %thead
     %tr
       %th Nome
-      %th Quantidade de Lugares
+      %th Qtd lugares
       %th Disponivel
+      %th
+      %th
+      %th
+
   %tbody
     - @salas.each do |sala|
       %tr
         %td= sala.nome
         %td= sala.qtd_lugares
         %td= sala.disponivel
-        %td= link_to "Mais.. #{movie.title}", movie_path(movie)
-    
+        %td= link_to 'Show', sala
+        %td= link_to 'Edit', edit_sala_path(sala)
+        %td= link_to 'Destroy', sala, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-= link_to 'Adicionar nova sala', new_movie_path
+%br
+
+= link_to 'New Sala', new_sala_path

@@ -1,16 +1,7 @@
--# edit.html.haml using partial
+%h1 Editing sala
 
-%h1 Editar Sala
+= render 'form'
 
-= form_tag sala_path(@sala), :method => :put do
-
-  = label :sala, :nome, 'Nome'
-  = text_field :sala, 'nome'
-
-  = label :sala, :qtd_lugares, 'Quantidade de lugares'
-  = text_field :sala, :qtd_lugares, 'qtd_lugares'
-
-  = label :sala, :disponivel, 'Disponivel?'
-  = check_box :sala, :disponivel
-
-  = submit_tag 'Atualizar'
+= link_to 'Show', @sala
+\|
+= link_to 'Back', salas_path

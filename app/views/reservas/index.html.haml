@@ -1,0 +1,21 @@
+%h1 Listing reservas
+
+%table
+  %thead
+    %tr
+      %th Data
+      %th
+      %th
+      %th
+
+  %tbody
+    - @reservas.each do |reserva|
+      %tr
+        %td= reserva.data
+        %td= link_to 'Show', reserva
+        %td= link_to 'Edit', edit_reserva_path(reserva)
+        %td= link_to 'Destroy', reserva, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Reserva', new_reserva_path

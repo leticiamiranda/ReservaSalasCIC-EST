@@ -7,6 +7,5 @@ class CreateSalas < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_index :salas, :nome, unique: true
   end
 end

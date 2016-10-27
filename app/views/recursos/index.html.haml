@@ -1,0 +1,23 @@
+%h1 Listing recursos
+
+%table
+  %thead
+    %tr
+      %th Nome
+      %th Qtd
+      %th
+      %th
+      %th
+
+  %tbody
+    - @recursos.each do |recurso|
+      %tr
+        %td= recurso.nome
+        %td= recurso.qtd
+        %td= link_to 'Show', recurso
+        %td= link_to 'Edit', edit_recurso_path(recurso)
+        %td= link_to 'Destroy', recurso, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Recurso', new_recurso_path

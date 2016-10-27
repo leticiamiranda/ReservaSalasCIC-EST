@@ -1,4 +1,4 @@
-class SalasController < ApplicationController
+class Dashboard::SalasController < ApplicationController
 
   def show
     id = params[:id] # retrieve movie ID from URI route

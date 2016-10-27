@@ -1,16 +1,16 @@
 <div class="authform">
-  <h3>Edit <%= resource_name.to_s.humanize %></h3>
+  <h3>Edite <%= resource_name.to_s.humanize %></h3>
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f| %>
     <%= devise_error_messages! %>
     <div class="form-group">
       <%= f.label 'Nome' %>
-      <%= f.text_field :name, :autofocus => true, class: 'form-control' %>
+      <%= f.text_field :nam, :autofocus => true, class: 'form-control' %>
     </div>
     <div class="form-group">
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <div>Esperando confirmação de: <%= resource.unconfirmed_email %></div>
       <% end %>
     </div>
     <fieldset>
@@ -31,11 +31,10 @@
         <%= f.password_field :current_password, class: 'form-control' %>
       </div>
     </fieldset>
-    <%= f.submit 'Update', :class => 'button right' %>
+    <%= f.submit 'Atualizar cadastro', :class => 'button right' %>
   <% end %>
 </div>
 <div class="authform">
-<h3>Cancel Account</h3>
-<p>Unhappy? We'll be sad to see you go.</p>
-<%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button right' %>
+<h3>Cancelar conta</h3>
+<%= button_to "Cancelar conta", registration_path(resource_name), :data => { :confirm => "Tem certeza?" }, :method => :delete, :class => 'button right' %>
 </div>

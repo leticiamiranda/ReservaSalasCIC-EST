@@ -1,0 +1,31 @@
+.authform
+  %h3
+    Edite #{resource_name.to_s.humanize}
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f|
+    = devise_error_messages!
+    .form-group
+      = f.label 'Nome'
+      = f.text_field :name, :autofocus => true, class: 'form-control'
+    .form-group
+      = f.label :email
+      = f.email_field :email, class: 'form-control'
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        %div
+          Esperando confirmação de: #{resource.unconfirmed_email}
+    %fieldset
+      %p Deixe em branco caso não queira alterar a sua senha.
+      .form-group
+        = f.label 'Senha'
+        = f.password_field :password, :autocomplete => 'off', class: 'form-control'
+      .form-group
+        = f.label 'Confirme a senha'
+        = f.password_field :password_confirmation, class: 'form-control'
+    %fieldset
+      %p Você deve digitar a senha atual para confirmar as mudanças.
+      .form-group
+        = f.label 'Senha atual'
+        = f.password_field :current_password, class: 'form-control'
+    = f.submit 'Atualizar cadastro', :class => 'button right'
+.authform
+  %h3 Cancelar conta
+  = button_to "Cancelar conta", registration_path(resource_name), :data => { :confirm => "Tem certeza?" }, :method => :delete, :class => 'button right'

@@ -1,0 +1,7 @@
+%h3 Bem vindo ao sistema de Reserva de Salas do CIC/EST da UnB
+%p
+  = link_to 'Usuários:', users_path
+  = User.count
+  registrados
+%div
+  %li.nav-item= link_to 'Sair', destroy_user_session_path, :method=>'delete', class: 'nav-link'

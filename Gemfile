@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'bourbon'
 gem 'pivotal-tracker'
+gem 'glyphicons-rails'
 
 group :development, :test do
   gem 'byebug'
@@ -17,7 +18,11 @@ group :development do
   gem 'spring'
 end
 gem 'administrate'
-gem 'bootstrap', '~> 4.0.0.alpha3.1'
+gem 'sprockets-rails'
+gem 'bootstrap-sass'
+gem 'bootstrap', '~> 4.0.0.alpha5'
+gem 'turbolinks'
+gem 'autoprefixer-rails'
 gem 'devise'
 gem 'haml-rails'
 gem 'high_voltage'
@@ -49,4 +54,7 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
+end
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
 end

@@ -1,5 +1,5 @@
 %div
-    %img{:src => "../../assets/images/unb.jpeg", :align => "center"}
+    %img{:src => "../../assets/images/unb.jpeg", :align => "center", :width => "40", :height =>"30"}
 %div
     %h3 Reserva de Salas CIC/EST
 %div
@@ -7,7 +7,8 @@
     %p Por favor #{@resource.name}, confirme seu cadastro.
     %br
 
-%p= link_to 'Confirmar Cadastro', confirmation_url(@resource, confirmation_token: @token)
+%a{:class =>'btn btn-default' :href => '#' :role => 'button'} 'Confirmar cadastro'
+// %p= link_to 'Confirmar Cadastro', confirmation_url(@resource, confirmation_token: @token), class: "btn btn-info btn-lg"
 %p Se você recebeu esse email por engano, desconsidere.
 %hr
 %p Em caso de dúvidas contactar reservasalascic.est@gmail.com.

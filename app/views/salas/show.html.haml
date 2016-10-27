@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Nome:
+  = @sala.nome
+%p
+  %b Qtd lugares:
+  = @sala.qtd_lugares
+%p
+  %b Disponivel:
+  = @sala.disponivel
+
+= link_to 'Edit', edit_sala_path(@sala)
+\|
+= link_to 'Back', salas_path

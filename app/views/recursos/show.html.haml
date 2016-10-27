@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Nome:
+  = @recurso.nome
+%p
+  %b Qtd:
+  = @recurso.qtd
+
+= link_to 'Edit', edit_recurso_path(@recurso)
+\|
+= link_to 'Back', recursos_path

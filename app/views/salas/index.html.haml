@@ -1,0 +1,25 @@
+%h1 Listing salas
+
+%table
+  %thead
+    %tr
+      %th Nome
+      %th Qtd lugares
+      %th Disponivel
+      %th
+      %th
+      %th
+
+  %tbody
+    - @salas.each do |sala|
+      %tr
+        %td= sala.nome
+        %td= sala.qtd_lugares
+        %td= sala.disponivel
+        %td= link_to 'Show', sala
+        %td= link_to 'Edit', edit_sala_path(sala)
+        %td= link_to 'Destroy', sala, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Sala', new_sala_path

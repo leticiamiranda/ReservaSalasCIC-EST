@@ -3,6 +3,7 @@
 %table
   %thead
     %tr
+      %th Sala
       %th Data
       %th Disponibilidade
       %th
@@ -12,6 +13,7 @@
   %tbody
     - @agendas.each do |agenda|
       %tr
+        %td= agenda.sala.nome
         %td= agenda.data
         %td= agenda.disponibilidade
         %td= link_to 'Show', agenda

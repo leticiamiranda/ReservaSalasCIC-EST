@@ -11,14 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028042437) do
+ActiveRecord::Schema.define(version: 20161028220353) do
 
   create_table "agendas", force: :cascade do |t|
     t.datetime "data"
     t.boolean  "disponibilidade"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "sala_id"
   end
+
+  add_index "agendas", ["sala_id"], name: "index_agendas_on_sala_id"
 
   create_table "recursos", force: :cascade do |t|
     t.string   "nome"

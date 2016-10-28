@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Data:
+  = @agenda.data
+%p
+  %b Disponibilidade:
+  = @agenda.disponibilidade
+
+= link_to 'Edit', edit_agenda_path(@agenda)
+\|
+= link_to 'Back', agendas_path

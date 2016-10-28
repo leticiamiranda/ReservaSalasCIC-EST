@@ -1,0 +1,23 @@
+%h1 Listing agendas
+
+%table
+  %thead
+    %tr
+      %th Data
+      %th Disponibilidade
+      %th
+      %th
+      %th
+
+  %tbody
+    - @agendas.each do |agenda|
+      %tr
+        %td= agenda.data
+        %td= agenda.disponibilidade
+        %td= link_to 'Show', agenda
+        %td= link_to 'Edit', edit_agenda_path(agenda)
+        %td= link_to 'Destroy', agenda, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Agenda', new_agenda_path

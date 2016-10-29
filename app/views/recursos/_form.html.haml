@@ -7,6 +7,9 @@
           %li= msg
 
   .field
+    = f.label :sala
+    = collection_select(:recurso, :sala_id, Sala.all, :id, :nome)
+  .field
     = f.label :nome
     = f.text_field :nome
   .field

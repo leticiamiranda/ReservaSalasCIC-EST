@@ -3,6 +3,7 @@
 %table
   %thead
     %tr
+      %th Sala
       %th Nome
       %th Qtd
       %th
@@ -12,6 +13,7 @@
   %tbody
     - @recursos.each do |recurso|
       %tr
+        %td= recurso.sala.nome
         %td= recurso.nome
         %td= recurso.qtd
         %td= link_to 'Show', recurso

@@ -69,6 +69,6 @@ class RecursosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recurso_params
-      params.require(:recurso).permit(:nome, :qtd)
+      params.require(:recurso).permit(:nome, :qtd, :sala_id)
     end
 end

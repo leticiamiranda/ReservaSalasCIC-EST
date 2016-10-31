@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     root to: "users#index"
   end
   
-  namespace :vip do
+  namespace :professor do
     resources :reservas
     root to: "reservas#index"
   end

@@ -18,10 +18,9 @@ group :development do
   gem 'spring'
 end
 gem 'administrate'
+gem 'turbolinks'
 gem 'sprockets-rails'
 gem 'bootstrap-sass'
-gem 'bootstrap', '~> 4.0.0.alpha5'
-gem 'turbolinks'
 gem 'autoprefixer-rails'
 gem 'devise'
 gem 'haml-rails'

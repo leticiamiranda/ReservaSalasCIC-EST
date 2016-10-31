@@ -5,7 +5,6 @@ en:
     confirmations:
       confirmed: "Seu cadastro foi confirmado com sucesso."
       send_instructions: "Você receberá um email com instruções de como confirmar seu cadastro."
-      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
     failure:
       already_authenticated: "Você já está logado."
       inactive: "Sua conta ainda não foi ativada."
@@ -15,7 +14,7 @@ en:
       not_found_in_database: "%{authentication_keys} inválido ou senha inválida."
       timeout: "Sua sessão expirou. Por favor, entre novamente para continuar."
       unauthenticated: "Você precisa entrar ou se registrar para continuar."
-      unconfirmed: "You have to confirm your email address before continuing."
+      unconfirmed: "Você precisa confirmar seu email antes de continuar."
     mailer:
       confirmation_instructions:
         subject: "Instruções para confirmação de conta."

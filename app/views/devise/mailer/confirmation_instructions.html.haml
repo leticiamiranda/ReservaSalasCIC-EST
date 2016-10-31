@@ -6,7 +6,9 @@
     %hr
     %p Por favor #{@resource.name}, confirme seu cadastro.
     %br
+
 %p= link_to 'Confirmar Cadastro', confirmation_url(@resource, confirmation_token: @token), :class => 'button right'
+
 %p Se você recebeu esse email por engano, desconsidere.
 %hr
 %p Em caso de dúvidas contactar reservasalascic.est@gmail.com.

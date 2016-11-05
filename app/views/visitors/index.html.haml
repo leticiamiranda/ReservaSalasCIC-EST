@@ -8,4 +8,5 @@
   registrados
 
 %div
-  %li.nav-item= link_to 'Sair', destroy_user_session_path, :method=>'delete', class: 'nav-link'
+  %span{:class => "glyphicon glyphicon-off"}
+  = link_to 'Sair', destroy_user_session_path, :method=>'delete', class: 'nav-link'

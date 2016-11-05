@@ -2,6 +2,17 @@
 - flash.each do |name, msg|
   - if msg.is_a?(String)
     %div{:class => "alert alert-#{name.to_s == 'notice' ? 'success' : 'danger'}", :role  => "alert"}
-      %span{:class => "glyphicon glyphicon-exclamation-sign"}
-      %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
-      = content_tag :div, msg, :id => "flash_#{name}"
+      - if name.to_s == 'notice'
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+        = content_tag :div, content_tag(:span, " " + msg), :id => "flash_#{name}", class: "glyphicon glyphicon-check"
+      - else
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+        = content_tag :div," " + msg, :id => "flash_#{name}", class: "glyphicon glyphicon-exclamation-sign"
+        
+    
+//     concat(content_tag(:div, message, class: "alert #{bootstrap_class_for(msg_type)} fade in") do
+//               concat content_tag(:button, 'x', class: "close", data: { dismiss: 'alert' })
+//               concat content_tag(:i, nil, class: "glyphicon glyphicon-#{bootstrap_icon_for(msg_type)}")
+//               concat ' '
+//               concat message
+// end)

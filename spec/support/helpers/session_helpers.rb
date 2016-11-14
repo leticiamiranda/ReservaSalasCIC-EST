@@ -8,10 +8,10 @@ module Features
       click_button 'Confirmar registro'
     end
 
-    def signin(email, password)
+    def entrar(email, senha)
       visit new_user_session_path
       fill_in 'Email', with: email
-      fill_in 'Senha', with: password
+      fill_in 'Senha', with: senha
       click_button 'Entrar'
     end
   end

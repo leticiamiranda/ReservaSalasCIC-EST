@@ -25,12 +25,12 @@
       "required": false
     },
     "ADMIN_EMAIL": {
-      "description": "The administrator's email address for signing in.",
+      "description": "The administrator's email address for entrarg in.",
       "value": "reservasalacic.est@gmail.com",
       "required": true
     },
     "ADMIN_PASSWORD": {
-      "description": "The administrator's password for signing in.",
+      "description": "The administrator's password for entrarg in.",
       "value": "Admin_reserva_sala22016",
       "required": true
     },

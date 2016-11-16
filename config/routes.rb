@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   
   namespace :professor do
     resources :reservas
-    root to: "reservas#index"
+    resources :users
+    root to: "reservas#show"
   end
   
   root to: 'visitors#index'

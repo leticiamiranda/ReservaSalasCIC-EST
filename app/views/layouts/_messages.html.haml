@@ -8,5 +8,7 @@
       - else
         %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
         = content_tag :div," " + msg, :id => "flash_#{name}", class: "glyphicon glyphicon-exclamation-sign"
-        
+        - if msg.to_s == 'Antes de continuar, confirme a sua conta.'
+          = link_to "Não recebeu email de confirmação?", new_confirmation_path(resource_name), style: "color:#a94442"
+          
 

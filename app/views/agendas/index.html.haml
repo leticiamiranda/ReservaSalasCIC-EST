@@ -17,9 +17,12 @@
         %td= agenda.data
         %td= agenda.disponibilidade
         %td= link_to 'Show', agenda
-        %td= link_to 'Edit', edit_agenda_path(agenda)
-        %td= link_to 'Destroy', agenda, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        - if can? :manage, @agenda
+          %td= link_to 'Edit', edit_agenda_path(agenda)
+          %td= link_to 'Destroy', agenda, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        end
 
 %br
-
-= link_to 'New Agenda', new_agenda_path
+- if can? :create, @agenda
+  = link_to 'New Agenda', new_agenda_path
+end

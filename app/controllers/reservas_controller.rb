@@ -1,4 +1,5 @@
 class ReservasController < ApplicationController
+  load_and_authorize_resource
   before_action :set_reserva, only: [:show, :edit, :update, :destroy]
 
   # GET /reservas

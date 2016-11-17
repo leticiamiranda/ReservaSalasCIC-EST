@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bourbon'
 gem 'pivotal-tracker'
 gem 'glyphicons-rails'
+gem 'cancan'
 
 group :development, :test do
   gem 'byebug' , platform: :mri

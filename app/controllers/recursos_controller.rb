@@ -1,4 +1,5 @@
 class RecursosController < ApplicationController
+  load_and_authorize_resource
   before_action :set_recurso, only: [:show, :edit, :update, :destroy]
 
   # GET /recursos

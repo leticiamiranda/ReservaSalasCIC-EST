@@ -1,0 +1,16 @@
+-# in app/views/reservas/upcoming_events.html.haml
+
+%h1 'Proximas 10 Reservas:'
+
+%table{:border => 1}
+    %tbody
+        %tr
+            %td 'Sala'
+            %td 'Data da Reserva'
+            %td 'Horario da Reserva'
+            %td 'Link da Reserva no Google Calendar'
+        - @reservas.each do |reserva|
+            %td= reserva.description
+            %td= reserva.start
+            %td= reserva.start
+            %td= reserva.html_link

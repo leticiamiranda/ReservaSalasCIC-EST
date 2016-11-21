@@ -9,6 +9,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'bourbon'
 gem 'pivotal-tracker'
 gem 'glyphicons-rails'
+gem 'google-api-client'
 
 group :development, :test do
   gem 'byebug'

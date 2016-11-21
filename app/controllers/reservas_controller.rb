@@ -26,7 +26,7 @@ class ReservasController < ApplicationController
   def create
     @reserva = Reserva.new(reserva_params)
 
-    respond_to do |format|
+    zrespond_to do |format|
       if @reserva.save
         format.html { redirect_to @reserva, notice: 'Reserva was successfully created.' }
         format.json { render :show, status: :created, location: @reserva }
@@ -60,6 +60,11 @@ class ReservasController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def upcoming_events
+    @reservas = @Reserva.fetch_10_upcoming_events
+  end
+    
 
   private
     # Use callbacks to share common setup or constraints between actions.

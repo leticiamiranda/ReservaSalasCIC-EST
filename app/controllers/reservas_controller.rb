@@ -62,18 +62,18 @@ class ReservasController < ApplicationController
   end
   
   def upcoming_events
-    @reservas = @Reserva.fetch_10_upcoming_events
+    @reservas = Reserva.fetch_10_upcoming_events
   end
     
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_reserva
-      @reserva = Reserva.find(params[:id])
-    end
+  # private
+  #   # Use callbacks to share common setup or constraints between actions.
+  #   def set_reserva
+  #     @reserva = Reserva.find(params[:id])
+  #   end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def reserva_params
-      params.require(:reserva).permit(:data)
-    end
+  #   # Never trust parameters from the scary internet, only allow the white list through.
+  #   def reserva_params
+  #     params.require(:reserva).permit(:data)
+  #   end
 end

@@ -1,16 +1,21 @@
 -# in app/views/reservas/upcoming_events.html.haml
 
-%h1 'Proximas 10 Reservas:'
-
-%table{:border => 1}
-    %tbody
-        %tr
-            %td 'Sala'
-            %td 'Data da Reserva'
-            %td 'Horario da Reserva'
-            %td 'Link da Reserva no Google Calendar'
-        - @reservas.each do |reserva|
-            %td= reserva.description
-            %td= reserva.start
-            %td= reserva.start
-            %td= reserva.html_link
+.container
+    %div{:class => "panel-group"}
+        %div{:class => "panel panel-primary"}
+            %div{:class => "panel-heading"} 
+                Proximas 10 Reservas
+            %div{:class => "panel-body"}
+                %table{:class => "table table-striped table-bordered table-list"}
+                    %thead
+                        %tr
+                            %th Sala
+                            %th Data da Reserva
+                            %th Link da Reserva no Google Calendar
+                    %tbody
+                        %tr
+                            - @reservas.items.each do |reserva|
+                                %td= reserva.location
+                                %td #{reserva.start.date_time} a #{reserva.end.date_time}
+                                %td= link_to('Link da reserva',reserva.html_link)
+            

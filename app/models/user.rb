@@ -6,8 +6,8 @@ class User < ApplicationRecord
     self.role ||= :usuario
   end
   
-  def role? (role)
-    self.role == role
+  def role? (role_user)
+    self.role == role_user
   end
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

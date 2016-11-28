@@ -38,6 +38,15 @@ class UsersController < ApplicationController
       redirect_to root_path, :alert => "Acesso negado."
     end
   end
+  
+  protected
+  def confirmation_required?
+    if current_user.admin?
+      false
+    else
+      true
+    end
+  end
 
   def secure_params
     params.require(:user).permit(:role)

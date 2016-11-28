@@ -9,6 +9,7 @@ class Ability
     if user.role? (:secretaria)
       can :manage, Reservas
       can :manage, Agendas
+      can :manage, Salas
     end
     if user.role? (:professor)
       can :create, Agendas

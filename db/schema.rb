@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161029021754) do
+ActiveRecord::Schema.define(version: 20161031222534) do
 
   create_table "agendas", force: :cascade do |t|
     t.datetime "data"
@@ -19,9 +18,8 @@ ActiveRecord::Schema.define(version: 20161029021754) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.integer  "sala_id"
+    t.index ["sala_id"], name: "index_agendas_on_sala_id"
   end
-
-  add_index "agendas", ["sala_id"], name: "index_agendas_on_sala_id"
 
   create_table "recursos", force: :cascade do |t|
     t.string   "nome"
@@ -29,9 +27,8 @@ ActiveRecord::Schema.define(version: 20161029021754) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "sala_id"
+    t.index ["sala_id"], name: "index_recursos_on_sala_id"
   end
-
-  add_index "recursos", ["sala_id"], name: "index_recursos_on_sala_id"
 
   create_table "reservas", force: :cascade do |t|
     t.datetime "data"
@@ -45,6 +42,8 @@ ActiveRecord::Schema.define(version: 20161029021754) do
     t.boolean  "disponivel"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "agenda_id"
+    t.index ["agenda_id"], name: "index_salas_on_agenda_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,10 +65,9 @@ ActiveRecord::Schema.define(version: 20161029021754) do
     t.datetime "updated_at",                          null: false
     t.string   "name"
     t.integer  "role"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

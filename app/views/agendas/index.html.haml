@@ -1,28 +1,33 @@
-%h1 Listing agendas
+%h1 Agenda
 
-%table
-  %thead
-    %tr
-      %th Sala
-      %th Data
-      %th Disponibilidade
-      %th
-      %th
-      %th
+- if @agendas.empty?
+  %center Nenhuma reserva cadastrada
 
-  %tbody
-    - @agendas.each do |agenda|
+- else
+
+  %table
+    %thead
       %tr
-        %td= agenda.sala.nome
-        %td= agenda.data
-        %td= agenda.disponibilidade
-        %td= link_to 'Show', agenda
-        - if can? :manage, @agenda
-          %td= link_to 'Edit', edit_agenda_path(agenda)
-          %td= link_to 'Destroy', agenda, :method => :delete, :data => { :confirm => 'Are you sure?' }
-        end
+        %th Sala
+        %th Data
+        %th Disponibilidade
+        %th
+        %th
+        %th
+
+    %tbody
+      - @agendas.each do |agenda|
+        %tr
+          %td= agenda.sala.nome
+          %td= agenda.data
+          %td= agenda.disponibilidade
+          %td= link_to 'Detalhes', agenda
+          - if can? :manage, @agenda
+            %td= link_to 'Editar', edit_agenda_path(agenda)
+            %td= link_to 'Remover', agenda, :method => :delete, :data => { :confirm => 'Você tem certeza que deseja realizar a remoção?' }
+      %end
 
 %br
 - if can? :create, @agenda
-  = link_to 'New Agenda', new_agenda_path
+  = link_to 'Cadastrar reserva', new_agenda_path
 end

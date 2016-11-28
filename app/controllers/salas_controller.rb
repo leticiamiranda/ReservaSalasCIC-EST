@@ -6,9 +6,6 @@ class SalasController < ApplicationController
   # GET /salas.json
   def index
     @salas = Sala.all
-    if @salas.empty?
-      flash[:warning] = "Nenhuma sala registrada!"
-    end  
   end
 
   # GET /salas/1

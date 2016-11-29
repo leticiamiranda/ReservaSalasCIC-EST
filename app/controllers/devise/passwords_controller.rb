@@ -1,4 +1,4 @@
-class Devise::PasswordsController < Devise::PasswordsController
+class Devise::PasswordsController < DeviseController
   skip_authorization_check
   prepend_before_action :require_no_authentication
   # Render the #edit only if coming from a reset password email link

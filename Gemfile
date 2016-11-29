@@ -55,6 +55,8 @@ group :production do
   gem 'rails_12factor'
 end
 group :test do
+  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails-training-wheels'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'launchy'

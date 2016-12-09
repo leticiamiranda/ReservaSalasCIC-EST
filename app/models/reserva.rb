@@ -50,10 +50,9 @@ class Reserva < ActiveRecord::Base
         @calendar_id = 'primary'
     end
     
-    def self.fetch_next_reservas(qtd)
+    def self.fetch_next_reservas
         initialize_google_calendar_api
         response = @service.list_events(@calendar_id,
-                               max_results: qtd,
                                single_events: true,
                                order_by: 'startTime',
                                time_min: Time.now.iso8601)

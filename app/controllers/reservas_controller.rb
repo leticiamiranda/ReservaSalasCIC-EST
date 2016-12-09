@@ -5,7 +5,7 @@ class ReservasController < ApplicationController
   # GET /reservas
   # GET /reservas.json
   def index
-     @reservas = Reserva.fetch_next_reservas(10)
+     @reservas = Reserva.fetch_next_reservas
   end
 
   # GET /reservas/1

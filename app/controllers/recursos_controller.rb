@@ -1,4 +1,5 @@
 class RecursosController < ApplicationController
+  load_and_authorize_resource
   before_action :set_recurso, only: [:show, :edit, :update, :destroy]
 
   # GET /recursos
@@ -27,8 +28,8 @@ class RecursosController < ApplicationController
     @recurso = Recurso.new(recurso_params)
 
     respond_to do |format|
-      if @recurso.save
-        format.html { redirect_to @recurso, notice: 'Recurso was successfully created.' }
+      if @recurso.cadastrar
+        format.html { redirect_to @recurso, notice: 'Recurso cadastrado com sucesso!' }
         format.json { render :show, status: :created, location: @recurso }
       else
         format.html { render :new }

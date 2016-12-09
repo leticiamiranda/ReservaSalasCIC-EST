@@ -3,8 +3,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body { padding-top: 20px; }
 // make all images responsive by default
+h3 {
+	font-family: Raleway;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 15.4px;
+}
 img {
   margin: 0 auto;
 }

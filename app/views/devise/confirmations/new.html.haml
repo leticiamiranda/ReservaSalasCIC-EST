@@ -1,4 +1,4 @@
-%h2 Reenviar instruções de confirmação de email
+%h3 Reenviar instruções de confirmação de email
 = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
   = devise_error_messages!
   .field
@@ -6,5 +6,5 @@
     %br/
     = f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email)
   .actions
-    = f.submit "Reenviar instruções de confirmação"
+    = f.submit "Reenviar email de confirmação"
 = render "devise/shared/links"

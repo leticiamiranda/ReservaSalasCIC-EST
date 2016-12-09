@@ -1,9 +1,7 @@
 %header
   %h3 Bem vindo ao sistema de Reserva de Salas do CIC/EST da UnB
-  %hr
-  
 %a
-  = link_to 'Usuários:', users_path
+  = link_to 'Usuários:', users_path, class: 'nav-link'
   = User.count
   registrados
 

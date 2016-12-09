@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  load_and_authorize_resource
   before_action :authenticate_user!
   before_action :admin_only, :except => :show
 
@@ -35,6 +36,15 @@ class UsersController < ApplicationController
   def admin_only
     unless current_user.admin?
       redirect_to root_path, :alert => "Acesso negado."
+    end
+  end
+  
+  protected
+  def confirmation_required?
+    if current_user.admin?
+      false
+    else
+      true
     end
   end
 

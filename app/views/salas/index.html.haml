@@ -1,25 +1,29 @@
-%h1 Listing salas
+%h1 Salas
 
-%table
-  %thead
-    %tr
-      %th Nome
-      %th Qtd lugares
-      %th Disponivel
-      %th
-      %th
-      %th
+-if @salas.empty?
+  %center Nenhuma sala cadastrado
 
-  %tbody
-    - @salas.each do |sala|
+-else
+  %table
+    %thead
       %tr
-        %td= sala.nome
-        %td= sala.qtd_lugares
-        %td= sala.disponivel
-        %td= link_to 'Show', sala
-        %td= link_to 'Edit', edit_sala_path(sala)
-        %td= link_to 'Destroy', sala, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %th Nome
+        %th Qtd lugares
+        %th Disponível
+        %th
+        %th
+        %th
+
+    %tbody
+      - @salas.each do |sala|
+        %tr
+          %td= sala.nome
+          %td= sala.qtd_lugares
+          %td= sala.disponivel
+          %td= link_to 'Detalhes', sala
+          %td= link_to 'Editar', edit_sala_path(sala)
+          %td= link_to 'Remover', sala, :method => :delete, :data => { :confirm => 'Você tem certeza que deseja realizar a remoção?' }
 
 %br
 
-= link_to 'New Sala', new_sala_path
+= link_to 'Cadastrar sala', new_sala_path

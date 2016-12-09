@@ -26,23 +26,23 @@ feature 'Entrar', :devise do
     expect(page).to have_content I18n.t 'devise.sessions.signed_in'
   end
 
-  # Cenário: Usuário não consegue entrar com
-  #   Given I exist as a user
-  #   And I am not signed in
-  #   When I sign in with a wrong email
-  #   Then I see an invalid email message
+  # Cenário: Usuário não consegue entrar com email invalido
+  #  Dado que sou um usuario
+  #  e nao estou logado
+  #  quando eu entro com um email invalido
+  #  recebo a mensagem 'E-mail ou senha inválidos.'
   scenario 'Usuario nao consegue entrar com email invalido' do
     usuario = FactoryGirl.create(:users)
     entrar('invalid@email.com', usuario.password)
     expect(page).to have_content I18n.t 'devise.failure.not_found_in_database', authentication_keys: 'email'
   end
 
-  # Scenario: User cannot sign in with wrong password
-  #   Given I exist as a user
-  #   And I am not signed in
-  #   When I sign in with a wrong password
-  #   Then I see an invalid password message
-  scenario 'user cannot sign in with wrong password' do
+  # Cenário: Usuário não consegue entrar com senha invalida
+  #  Dado que sou um usuario
+  #  e nao estou logado
+  #  quando eu entro com uma senha invalida
+  #  recebo a mensagem 'E-mail ou senha inválidos.'
+  scenario 'Usuario nao consegue entrar com senha invalida' do
     usuario = FactoryGirl.create(:usuario)
     entrar(usuario.email, 'invalidpass')
     expect(page).to have_content I18n.t 'devise.failure.invalid', authentication_keys: 'email'

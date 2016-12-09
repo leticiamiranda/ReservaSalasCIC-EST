@@ -4,7 +4,7 @@ class ReservasController < ApplicationController
   # GET /reservas
   # GET /reservas.json
   def index
-    @reservas = Reserva.all
+     @reservas = Reserva.fetch_next_reservas(10)
   end
 
   # GET /reservas/1
@@ -60,11 +60,6 @@ class ReservasController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-  def upcoming_events
-    @reservas = Reserva.fetch_10_upcoming_events
-  end
-    
 
   # private
   #   # Use callbacks to share common setup or constraints between actions.

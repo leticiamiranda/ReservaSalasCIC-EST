@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-  
-  get '/reservas/upcoming_events', to: 'reservas#upcoming_events'
+  # get '/reservas/show' to 'reservas#show'
   resources :agendas
   resources :reservas
   resources :salas

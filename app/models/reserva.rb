@@ -4,8 +4,6 @@ require 'googleauth/stores/file_token_store'
 
 require 'fileutils'
 
-
-
 class Reserva < ActiveRecord::Base
     
     
@@ -14,7 +12,7 @@ class Reserva < ActiveRecord::Base
     @@CLIENT_SECRETS_PATH = File.absolute_path('./') + '/config/client_secret.json'
     @@CREDENTIALS_PATH = File.join(Dir.home, '.credentials',
                                  "reservasalascicest.yaml")
-    @@SCOPE = Google::Apis::CalendarV3::AUTH_CALENDAR_READONLY
+    @@SCOPE = Google::Apis::CalendarV3::AUTH_CALENDAR
     
 
     ##
@@ -52,10 +50,10 @@ class Reserva < ActiveRecord::Base
         @calendar_id = 'primary'
     end
     
-    def self.fetch_10_upcoming_events
+    def self.fetch_next_reservas(qtd)
         initialize_google_calendar_api
         response = @service.list_events(@calendar_id,
-                               max_results: 10,
+                               max_results: qtd,
                                single_events: true,
                                order_by: 'startTime',
                                time_min: Time.now.iso8601)

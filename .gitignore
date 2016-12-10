@@ -79,4 +79,4 @@ pickle-email-*.html
 # tilde files are usually backup files from a text editor
 *~
 
-db/migrate/20161128223341_confirma_usuarios.rb
+/db/migrate/20161128223341_confirma_usuarios.rb

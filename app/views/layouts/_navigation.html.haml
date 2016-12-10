@@ -5,9 +5,15 @@
     %ul.nav.navbar-nav.clearfix
       %li.nav-item
         = link_to "Reserva de Salas CIC/EST", root_path, class: 'h3', style: 'color:#19367a; background-color:#ffffff;'
-      %ul.nav.navbar-nav.navbar-right  
-        = button_to new_user_session_path, {class: 'btn btn-primary btn-primary'} do
-          %span{:class => 'glyphicon glyphicon-user'}
-          Login
+      - if user_signed_in?
+        %ul.nav.navbar-nav.navbar-right  
+          = button_to destroy_user_session_path, {:method => :delete, class: 'btn btn-danger'} do
+            %span{:class => 'glyphicon glyphicon-off'}
+            Sair
+      - else
+        %ul.nav.navbar-nav.navbar-right  
+          = button_to new_user_session_path, {class: 'btn btn-primary btn-primary'} do
+            %span{:class => 'glyphicon glyphicon-user'}
+            Login
   %hr
   %ul.nav.navbar-nav= render 'layouts/navigation_links'

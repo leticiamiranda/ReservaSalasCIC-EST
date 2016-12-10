@@ -16,6 +16,7 @@ gem 'cancan'
 gem 'selenium-webdriver'  
 gem 'capybara'  
 gem 'cucumber'
+gem 'cancancan'
 
 group :development, :test do
   gem 'byebug' , platform: :mri

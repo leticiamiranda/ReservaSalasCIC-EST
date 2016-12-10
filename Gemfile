@@ -12,6 +12,10 @@ gem 'pivotal-tracker'
 gem 'glyphicons-rails'
 gem 'cancan'
 
+gem 'selenium-webdriver'  
+gem 'capybara'  
+gem 'cucumber'
+
 group :development, :test do
   gem 'byebug' , platform: :mri
 end

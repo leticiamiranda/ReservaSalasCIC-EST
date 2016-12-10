@@ -19,8 +19,11 @@ module NavigationHelpers
     when /^the salas page/
       '/salas'
 
-    when /^the Create New Movie page/
-      '/movies/new'
+    when /the sign up page/
+      '/users/sign_up'
+
+    when /the sign in page/
+      '/users/sign_in'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

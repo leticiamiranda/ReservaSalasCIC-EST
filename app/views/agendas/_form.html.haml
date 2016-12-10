@@ -16,4 +16,5 @@
     = f.label :disponibilidade
     = f.check_box :disponibilidade
   .actions
+  - if can? :create, @agenda
     = f.submit 'Save'

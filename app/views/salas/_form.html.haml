@@ -6,14 +6,27 @@
         - @sala.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :nome
-    = f.text_field :nome
-  .field
-    = f.label :qtd_lugares
-    = f.number_field :qtd_lugares
-  .field
-    = f.label :disponivel
-    = f.text_field :disponivel
-  .actions
-    = f.submit 'Save'
+
+  .field{:style => "padding: 5px 0; padding-top: 40px"}
+    .row
+      .col-md-1
+        = f.label :nome
+      .col-md-9
+        = f.text_field :nome
+  .field{:style => "padding: 5px 0;"}
+    .row
+      .col-md-1
+        = f.label :lugares
+      .col-md-9
+        = f.number_field :qtd_lugares
+  .field{:style => "padding: 5px 0;"}
+    .row
+      .col-md-1
+        = f.label :disponivel
+      .col-md-9
+        = f.text_field :disponivel
+  .actions{:style => "margin: auto; width: 95%; padding: 30px;"}
+    - if can? :create, @sala
+      = f.submit 'Cadastrar'
+      //= link_to 'Voltar', salas_path
+      = button_to 'Voltar', salas_path

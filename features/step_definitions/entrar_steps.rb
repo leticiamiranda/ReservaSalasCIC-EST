@@ -8,7 +8,7 @@ def cria_usuario
  })
 end
 
-def sign_in
+def entrar
   visit '/users/sign_in'
   fill_in 'user_email', :with => @user[:email]
   fill_in 'user_password', :with => @user[:password]
@@ -20,8 +20,8 @@ Given /^I am not registered yet$/ do
 end
 
 When /^I sign in with my credentials$/ do
-  cria_usuario
-  sign_in
+  cria_usuario if @user.nil?
+  entrar
 end
 
 Then /^I should see an invalid email or password message$/ do
@@ -34,12 +34,16 @@ Then /^I should be signed out$/ do
   expect(page).to_not have_content "Sair"
 end
 
+Given /^I am a registered user$/ do
+  cria_usuario
+end
 
 Given /^I am not logged in$/ do
   visit destroy_user_session_path
 end
 
-
-Given /^I am a registered user$/ do
-  cria_usuario
+When /^I sign in with a wrong email$/ do
+  @user[:email]= "emailerrado@teste.com"
+  entrar
 end
+

@@ -79,5 +79,9 @@ pickle-email-*.html
 # tilde files are usually backup files from a text editor
 *~
 
+<<<<<<< HEAD
 # gooogle calendar quickstart
 google_calendar.rb
+=======
+db/migrate/20161128223341_confirma_usuarios.rb
+>>>>>>> origin/master

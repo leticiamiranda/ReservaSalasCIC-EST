@@ -13,6 +13,10 @@ gem 'glyphicons-rails'
 gem 'google-api-client'
 gem 'cancan'
 
+gem 'selenium-webdriver'  
+gem 'capybara'  
+gem 'cucumber'
+
 group :development, :test do
   gem 'byebug' , platform: :mri
 end

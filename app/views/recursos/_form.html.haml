@@ -12,21 +12,21 @@
       .col-md-1
         = f.label :sala
       .col-md-9
-        = collection_select(:recurso, :sala_id, Sala.all, :id, :nome)
+        = collection_select(:recurso, :sala_id, Sala.all, :id, :nome, :required => true)
   .field{:style => "padding: 5px 0;"}
     .row
       .col-md-1
         = f.label :nome
       .col-md-9 
-        = f.text_field :nome
+        = f.text_field :nome, :required => true
   .field{:style => "padding: 5px 0;"}
     .row
       .col-md-1
         = f.label :quantidade
       .col-md-9  
-        = f.number_field :qtd
+        = f.number_field :qtd, :required => true
   .actions{:style => "margin: auto; width: 95%; padding: 30px;"}
     = f.submit 'Cadastrar'
-    = button_to "Voltar", recursos_path
-    //= link_to 'Voltar', recursos_path
+    //= button_to "Voltar", recursos_path
+    = link_to 'Voltar', recursos_path
     

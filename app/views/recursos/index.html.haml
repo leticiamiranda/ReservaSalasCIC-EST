@@ -10,7 +10,7 @@
       %tr
         %th Sala
         %th Nome
-        %th Qtd. Lugares
+        %th Quantidade
         %th
         %th
         %th
@@ -23,7 +23,7 @@
           %td= recurso.qtd
           %td= link_to 'Detalhes', recurso
           %td= link_to 'Editar', edit_recurso_path(recurso)
-          %td= link_to 'Remover', recurso, :method => :delete, :data => { :confirm => 'Você tem certeza que deseja realizar a remoção?' }
+          %td= link_to 'Remover', recurso, :method => :delete, :data => { :confirm => 'Você tem certeza que deseja remover esse recurso?' }
 
 %br
 

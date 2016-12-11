@@ -81,4 +81,3 @@ pickle-email-*.html
 *~
 
 db/migrate/20161128223341_confirma_usuarios.rb
-

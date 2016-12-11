@@ -13,11 +13,10 @@ Rails.application.routes.draw do
   
   namespace :professor do
     resources :reservas
-    resources :users
-    root to: "reservas#show"
+    root to: "reservas#index"
   end
   
-  root to: 'visitors#index'
+  root to: "reservas#index"
   devise_for :users
   resources :users
 

@@ -4,18 +4,23 @@
             %div{:class => "panel-heading"} 
                 Proximas Reservas
             %div{:class => "panel-body"}
-                %table{:class => "table table-striped table-list table-hover"}
+                %table{:class => "table table-striped table-list table-hover", :name => 'reservas'}
                     %thead
-                        %tr
-                            %th Sala
-                            %th Autor da Reserva
-                            %th Data/Hora da Reserva
-                            %th Link da Reserva no Google Calendar
+                        %th Sala
+                        %th Autor da Reserva
+                        %th Data/Hora da Reserva
+                        %th Link da Reserva no Google Calendar
                     %tbody
-                        %tr
-                            - @reservas.items.each do |reserva|
+                        - @reservas.each do |reserva|
+                            %tr
                                 %td= reserva.location
-                                %td= /Reserva para: (.*)$/.match(reserva.description)[1]
+                                - descricao = /Reserva para: (.*)$/.match(reserva.description)
+                                - if (!descricao.nil?)
+                                    %td= descricao[1]
+                                - else
+                                    %td= ''
+                                %end
                                 %td #{reserva.start.date_time.strftime("%d/%m/%Y às %H:%M")} a #{reserva.end.date_time.strftime("%d/%m/%Y às %H:%M")}
                                 %td= link_to('Ver reserva no Google Calendar',reserva.html_link)
+                        %end
 

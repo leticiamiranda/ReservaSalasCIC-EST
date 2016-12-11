@@ -12,21 +12,21 @@
       .col-md-1
         = f.label :nome
       .col-md-9
-        = f.text_field :nome
+        = f.text_field :nome, :required => true
   .field{:style => "padding: 5px 0;"}
     .row
       .col-md-1
         = f.label :lugares
       .col-md-9
-        = f.number_field :qtd_lugares
+        = f.number_field :qtd_lugares, :required => true
   .field{:style => "padding: 5px 0;"}
     .row
       .col-md-1
         = f.label :disponivel
       .col-md-9
-        = f.text_field :disponivel
-  .actions{:style => "margin: auto; width: 95%; padding: 30px;"}
+        = f.text_field :disponivel, :required => true
+  .actions{:style => "margin: auto; width: 95%; heigh: 30%; padding: 30px;"}
     - if can? :create, @sala
       = f.submit 'Cadastrar'
-      //= link_to 'Voltar', salas_path
-      = button_to 'Voltar', salas_path
+      = link_to 'Voltar', salas_path
+      //= button_to 'Voltar', '/salas'

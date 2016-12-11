@@ -1,12 +1,13 @@
-%p#notice= notice
+//%p#notice= notice
 
-%p
-  %b Nome:
+%p.row		
+  %b.col-md-1 Nome:
   = @recurso.nome
-%p
-  %b Qtd:
+%p.row
+  %b.col-md-1 Qtdade.:
   = @recurso.qtd
 
-= link_to 'Edit', edit_recurso_path(@recurso)
+
+= link_to 'Editar', edit_recurso_path(@recurso)
 \|
-= link_to 'Back', recursos_path
+= link_to 'Voltar', recursos_path

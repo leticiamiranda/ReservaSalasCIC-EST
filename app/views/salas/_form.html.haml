@@ -24,7 +24,7 @@
       .col-md-1
         = f.label :disponivel
       .col-md-9
-        = f.text_field :disponivel, :required => true
+        = f.check_box :disponivel, :required => true
   .actions{:style => "margin: auto; width: 95%; heigh: 30%; padding: 30px;"}
     - if can? :create, @sala
       = f.submit 'Cadastrar'

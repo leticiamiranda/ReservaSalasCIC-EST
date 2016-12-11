@@ -10,6 +10,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'bourbon'
 gem 'pivotal-tracker'
 gem 'glyphicons-rails'
+gem 'google-api-client'
+gem 'cancan'
+
+gem 'selenium-webdriver'  
+gem 'capybara'  
+gem 'cucumber'
 gem 'cancancan'
 
 group :development, :test do

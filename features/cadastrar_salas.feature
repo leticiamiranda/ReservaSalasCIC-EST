@@ -4,7 +4,8 @@ Feature: Salas
 	I Want send and manage all salas
 
 	Scenario: Add Salas
-		When I am in the page
-		And click in "Cadastrar sala"
-		And fill the form
+		Given I am on the salas page
+		When I follow "Cadastrar sala"
+		Then I will be on cadastrar sala page
+		When I fill in "Nome" with "Sala"
 		Then I Should see my register in the list

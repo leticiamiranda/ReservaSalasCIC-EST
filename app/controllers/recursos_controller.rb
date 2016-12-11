@@ -28,7 +28,7 @@ class RecursosController < ApplicationController
     @recurso = Recurso.new(recurso_params)
 
     respond_to do |format|
-      if @recurso.cadastrar
+      if @recurso.save
         format.html { redirect_to @recurso, notice: 'Recurso cadastrado com sucesso!' }
         format.json { render :show, status: :created, location: @recurso }
       else
@@ -43,7 +43,7 @@ class RecursosController < ApplicationController
   def update
     respond_to do |format|
       if @recurso.update(recurso_params)
-        format.html { redirect_to @recurso, notice: 'Recurso was successfully updated.' }
+        format.html { redirect_to @recurso, notice: 'Recurso atualizado com sucesso.' }
         format.json { render :show, status: :ok, location: @recurso }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class RecursosController < ApplicationController
   def destroy
     @recurso.destroy
     respond_to do |format|
-      format.html { redirect_to recursos_url, notice: 'Recurso was successfully destroyed.' }
+      format.html { redirect_to recursos_url, notice: 'Recurso removido com sucesso.' }
       format.json { head :no_content }
     end
   end

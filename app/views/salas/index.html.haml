@@ -22,7 +22,7 @@
           %td= sala.disponivel
           %td= link_to 'Detalhes', sala
           %td= link_to 'Editar', edit_sala_path(sala)
-          %td= link_to 'Remover', sala, :method => :delete, :data => { :confirm => 'Você tem certeza que deseja realizar a remoção?' }
+          %td= link_to 'Remover', sala, :method => :delete, :data => { :confirm => 'Você tem certeza que deseja remover essa sala? Todos os seus recursos também serão removidos.' }
 
 %br
 

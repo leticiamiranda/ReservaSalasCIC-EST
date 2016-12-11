@@ -1,21 +1,26 @@
-%h1 Listing reservas
+.container
+    %div{:class => "panel-group"}
+        %div{:class => "panel panel-primary"}
+            %div{:class => "panel-heading"} 
+                Proximas Reservas
+            %div{:class => "panel-body"}
+                %table{:class => "table table-striped table-list table-hover", :name => 'reservas'}
+                    %thead
+                        %th Sala
+                        %th Autor da Reserva
+                        %th Data/Hora da Reserva
+                        %th Link da Reserva no Google Calendar
+                    %tbody
+                        - @reservas.each do |reserva|
+                            %tr
+                                %td= reserva.location
+                                - descricao = /Reserva para: (.*)$/.match(reserva.description)
+                                - if (!descricao.nil?)
+                                    %td= descricao[1]
+                                - else
+                                    %td= ''
+                                %end
+                                %td #{reserva.start.date_time.strftime("%d/%m/%Y às %H:%M")} a #{reserva.end.date_time.strftime("%d/%m/%Y às %H:%M")}
+                                %td= link_to('Ver reserva no Google Calendar',reserva.html_link)
+                        %end
 
-%table
-  %thead
-    %tr
-      %th Data
-      %th
-      %th
-      %th
-
-  %tbody
-    - @reservas.each do |reserva|
-      %tr
-        %td= reserva.data
-        %td= link_to 'Show', reserva
-        %td= link_to 'Edit', edit_reserva_path(reserva)
-        %td= link_to 'Destroy', reserva, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Reserva', new_reserva_path

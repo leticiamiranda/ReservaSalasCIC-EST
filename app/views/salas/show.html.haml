@@ -1,15 +1,15 @@
-%p#notice= notice
+//%p#notice= notice
 
-%p
-  %b Nome:
+%p.row		
+  %b.col-md-1 Nome:
   = @sala.nome
-%p
-  %b Qtd lugares:
+%p.row		
+  %b.col-md-1 Lugares:
   = @sala.qtd_lugares
-%p
-  %b Disponivel:
+%p.row		
+  %b.col-md-1 Disponivel:
   = @sala.disponivel
 
-= link_to 'Edit', edit_sala_path(@sala)
+= link_to 'Editar', edit_sala_path(@sala)
 \|
-= link_to 'Back', salas_path
+= link_to 'Voltar', salas_path

@@ -16,6 +16,9 @@ module NavigationHelpers
     when /^the salas page/
       '/salas'
 
+    when /the sign in page/
+      '/users/sign_in'
+    
     when /^the cadastrar sala page/
       '/salas/new'
 

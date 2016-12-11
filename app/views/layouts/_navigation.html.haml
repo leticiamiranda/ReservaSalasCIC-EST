@@ -12,7 +12,7 @@
             Sair
       - else
         %ul.nav.navbar-nav.navbar-right  
-          = button_to new_user_session_path, {class: 'btn btn-primary btn-primary'} do
+          = button_to new_user_session_path, {:method => :get, class: 'btn btn-primary btn-primary', style: 'color:#ffffff'} do
             %span{:class => 'glyphicon glyphicon-user'}
             Login
   %hr

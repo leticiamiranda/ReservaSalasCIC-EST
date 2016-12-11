@@ -1,13 +1,13 @@
 # Implementacao de testes de aceitacao usando Cucumber, Capybara e Rspec
 def cria_usuario_visitante
-  @visitor ||= { :name => "Leticia", :email => "letiiribeiro@gmail.com",
-:password => "111111", :password_confirmation => "111111" }
+  @visitor ||= { :name => "Visitante teste", :email => "teste@example.com",
+:password => "123123", :password_confirmation => "123123" }
 end
 
 def cria_usuario 
   cria_usuario_visitante
   apaga_usuario
-  @user = User.create!({
+  User.create!({
    :name => "usuarioteste",
    :email => "testando@exemplo.com",
    :password => "12345678",
@@ -16,10 +16,17 @@ def cria_usuario
  })
 end
 
-def entrar
+def entrar_visitante
   visit '/users/sign_in'
   fill_in 'user_email', :with => @visitor[:email]
   fill_in 'user_password', :with => @visitor[:password]
+  click_button 'Entrar'
+end
+
+def entrar_usuario(email, password)
+  visit '/users/sign_in'
+  fill_in 'user_email', :with => email
+  fill_in 'user_password', :with => password
   click_button 'Entrar'
 end
 
@@ -33,9 +40,9 @@ Given /^I am not registered yet$/ do
   apaga_usuario
 end
 
-When /^I sign in with my credentials$/ do
+When /^I sign in with the credentials I wish I had$/ do
   cria_usuario_visitante
-  entrar
+  entrar_visitante
 end
 
 Then /^I should see an invalid email or password message$/ do
@@ -59,13 +66,13 @@ end
 When /^I sign in with a wrong email$/ do
   cria_usuario_visitante
   @visitor[:email] = "emailerrado@teste.com"
-  entrar
+  entrar_visitante
 end
 
 When /^I sign in with a wrong password$/ do
   cria_usuario_visitante
   @visitor[:encrypted_password] = "111213546312352225811"
-  entrar
+  entrar_visitante
 end
 
 Then(/^I should see a successful sign in message$/) do
@@ -82,7 +89,9 @@ Then(/^I should be signed in$/) do
   expect(page).to_not have_content "Registrar-se"
 end
 
-
-Then (/^show me the page$/) do
-  save_and_open_page
+When (/^I sign in with valid credentials$/) do
+  email = 'testando@user.com'
+  password = '123456'
+  User.new(:email => email, :password => password, :password_confirmation => password, :confirmed_at => Time.now).save!
+  entrar_usuario(email, password)
 end

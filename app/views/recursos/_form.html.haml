@@ -24,7 +24,7 @@
       .col-md-1
         = f.label :quantidade
       .col-md-9  
-        = f.number_field :qtd, :required => true
+        = f.number_field :qtd, :required => true, :min => "1"
   .actions{:style => "margin: auto; width: 95%; padding: 30px;"}
     = f.submit 'Cadastrar'
     //= button_to "Voltar", recursos_path

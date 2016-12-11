@@ -55,6 +55,10 @@ class SalasController < ApplicationController
   # DELETE /salas/1
   # DELETE /salas/1.json
   def destroy
+    @recursos = Recurso.where(sala_id: @sala.id)
+    @recursos.each do |recurso|
+      recurso.destroy
+    end
     @sala.destroy
     respond_to do |format|
       format.html { redirect_to salas_url, notice: 'Sala removida com sucesso.' }

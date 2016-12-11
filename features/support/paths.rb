@@ -13,17 +13,14 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /^the home\s?page$/
-      '/'
-
     when /^the salas page/
       '/salas'
 
-    when /the sign up page/
-      '/users/sign_up'
-
     when /the sign in page/
       '/users/sign_in'
+    
+    when /^the cadastrar sala page/
+      '/salas/new'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

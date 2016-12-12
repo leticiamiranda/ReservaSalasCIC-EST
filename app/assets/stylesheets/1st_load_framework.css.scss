@@ -20,6 +20,7 @@ img {
   font-size: inherit;
 }
 
+
 .table td {
   text-align: left;
 }
@@ -91,6 +92,12 @@ section {
   @extend .btn-primary;
   @extend .btn-sm;
 }
+
+.icon-home {
+  margin-top: 0.1cm;
+  margin-left: 0.1cm;
+}
+
 
 // .button-lg {
 //   @extend .btn;

@@ -12,8 +12,8 @@ describe UsersController do
       it "deve ter usuario atual (current_user) mesmo que nao haja ninguem logado" do
         expect(subject.current_user).to_not eq(nil)
       end
-      it "should get index" do
-        get 'index'
+      it "deve funcionar o :get index" do
+        get :index
         expect(response).to be_success
       end
   end

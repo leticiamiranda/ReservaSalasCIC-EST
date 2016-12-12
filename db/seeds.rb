@@ -39,3 +39,14 @@ salas.each do |sala|
 	Sala.create!(sala)
 end
 
+
+recursos = [
+		{:sala_id => "1", :nome => "Cadeira", :qtd => "20"},
+		{:sala_id => "2", :nome => "Cadeira", :qtd => "20"},
+		{:sala_id => "3", :nome => "Cadeira", :qtd => "20"},
+		{:sala_id => "4", :nome => "Cadeira", :qtd => "20"},
+		]
+
+recursos.each do |recurso|
+	Recurso.create!(recurso)
+end

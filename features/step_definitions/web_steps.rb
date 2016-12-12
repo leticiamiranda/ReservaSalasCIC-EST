@@ -12,6 +12,7 @@ World(WithinHelpers)
 
 Given (/I am registered as a user/) do 
     @user = User.create({
+        :role => :admin,
         :name => 'teste',
         :email => 'teste@test.com',
         :password => '123456',

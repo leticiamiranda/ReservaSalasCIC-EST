@@ -4,8 +4,8 @@ end
 
 Then(/^I will be on cadastrar sala page$/) do 
 	expect(@user.name).to eq('teste')
-	expect(@user.admin!)
-	expect(current_path) == 'salas/new'
+	expect(@user.admin?) == true
+	expect(current_path).to eq('salas/new')
 end
 
 When(/^fill the form$/) do
@@ -14,7 +14,6 @@ When(/^fill the form$/) do
 	fill_in 'Qtd lugares', :with => "20"
 	fill_in 'Disponivel', :with => "True"
 	click_button "Cadastrar sala"
-
 end
 
 Then(/^I Should see my register in the list$/) do
@@ -23,4 +22,8 @@ end
 
 Then (/^I should see a info message$/) do
   page.should have_selector ".info", text: "Preecha este campo."
+end
+
+Then (/^I see a alert message of access denied$/) do
+	expect(page).to have_selector ".alert", text: "Você não tem permissão para acessar essa página."
 end

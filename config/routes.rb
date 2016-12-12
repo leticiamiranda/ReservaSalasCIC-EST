@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  # get '/reservas/show' to 'reservas#show'
+  get '/reservas/google_calendar', to: 'reservas#google_calendar'
   resources :agendas
   resources :reservas
   resources :salas

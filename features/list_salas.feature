@@ -24,4 +24,4 @@ Given the following salas exist:
    	Scenario: list all salas to a admin
 		Given My role is admin
 		When I am on the salas page	
-   		Then I should see all the salas 	
+   		Then I should see "sala 3" before "sala 5"

@@ -2,10 +2,8 @@ When(/^click in "([^"]*)"$/) do |link|
 	click_link (link)
 end
 
-Then(/^I will be on cadastrar sala page$/) do 
-	expect(@user.name).to eq('teste')
-	expect(@user.admin?) == true
-	expect(current_path).to eq('salas/new')
+Then (/^I will be on cadastrar sala page$/) do 
+	expect(current_path).to eq('/salas/new')
 end
 
 When(/^fill the form$/) do
@@ -13,6 +11,12 @@ When(/^fill the form$/) do
 	fill_in 'sala_nome', :with => "LARA"
 	fill_in 'sala_qtd_lugares', :with => "20"
 	
+	click_button "Cadastrar"
+end
+
+When(/^fill the form again with sala with same name$/) do
+	fill_in 'sala_nome', :with => "LARA"
+	fill_in 'sala_qtd_lugares', :with => "20"
 	click_button "Cadastrar"
 end
 
@@ -28,4 +32,7 @@ Then (/^I see a alert message of access denied$/) do
 	expect(page).to have_selector ".alert", text: "Você não tem permissão para acessar essa página."
 end
 
+Then (/^I see a alert message$/) do
+	expect(page).to have_selector ".alert", text: "Sala não cadastrada."
+end
 

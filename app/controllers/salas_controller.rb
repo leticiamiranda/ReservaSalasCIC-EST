@@ -25,17 +25,27 @@ class SalasController < ApplicationController
   # POST /salas
   # POST /salas.json
   def create
-    @sala = Sala.new(sala_params)
 
-    respond_to do |format|
-      if @sala.save
-        format.html { redirect_to @sala, notice: 'Sala cadastrada com sucesso!' }
-        format.json { render :show, status: :created, location: @sala }
-      else
-        format.html { render :new }
-        format.json { render json: @sala.errors, status: :unprocessable_entity }
+    @sala_recuperada = Sala.find_by(params[:nome])
+
+    if @sala_recuperada
+      respond_to do |format|
+        format.html { redirect_to salas_url, alert: 'Sala não cadastrada. Existe outra sala com mesmo nome.' }
+        format.json { head :no_content }
       end
-    end
+    else  
+      @sala = Sala.new(sala_params)
+
+      respond_to do |format|
+        if @sala.save
+          format.html { redirect_to @sala, notice: 'Sala cadastrada com sucesso!' }
+          format.json { render :show, status: :created, location: @sala }
+        else
+          format.html { render :new }
+          format.json { render json: @sala.errors, status: :unprocessable_entity }
+        end
+      end
+    end  
   end
 
   # PATCH/PUT /salas/1

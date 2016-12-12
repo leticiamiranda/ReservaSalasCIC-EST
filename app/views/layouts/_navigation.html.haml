@@ -9,52 +9,68 @@
   %ul.nav.navbar-nav= render 'layouts/navigation_links'
 
   %nav.navbar.navbar-default
-    .navbar-header
-      %a.navbar-brand{:href => "/reservas"} Home
-      %ul.nav.navbar-nav
-        %li
-          - if can? :manage, @sala
-            %a{:href => "/salas"}
-              Salas
-              %span.glyphicon.glyphicon-map-marker
-        %li
-          - if can? :manage, @recurso
-            %a{:href => "/recursos"}
-              Recursos
-              %span.glyphicon.glyphicon-signal
-        %li
-        - if user_signed_in?
-          %ul.nav.navbar-nav.navbar-right{:style => 'margin-top: 0.375cm; margin-left: 1.5cm'}
-            =  current_user.name
-            %span.glyphicon.glyphicon-user.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
+    .container-fluid
+      .navbar-header
+        %a.navbar-brand{:href => "/reservas/google_calendar"} Home
+        %ul.nav.navbar-nav{:style => 'margin-left: 1.5cm'}
+          /%li
+          /- if can? :manage, @sala
+          /  %a{:href => "/salas"}
+          /    Salas
+          /    %i.fa.fa-university{"aria-hidden" => "true"}
+          /%li
+          /- if can? :manage, @recurso
+          /  %a{:href => "/recursos"} Recursos
           %li
-            %a{:href => "users/edit"}
-              Configurações da conta
-              %span.glyphicon.glyphicon-cog.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
-          %li.divider
-          %li
-            %a{:href => "/reservas?utf8=✓&minhas_reservas=1&commit=Filtrar"}
-              Minhas Reservas
-              %span.glyphicon.glyphicon-list.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
-          %li.divider
-          %li
-            %a{:href => "/agendas"}
-              Agenda
-              %span.glyphicon.glyphicon-calendar.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
-          %li.divider
-          %li
-            %a{:href => "/users/edit"}
-              Editar Conta 
-              %span.glyphicon.glyphicon-pencil.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
-          %li.divider
-          %li
-            = link_to destroy_user_session_path, {:method => :delete} do
-              Sair
-              %span.glyphicon.glyphicon-log-out.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
-        - else
-          %ul.nav.navbar-nav.navbar-right{:style => 'margin-left: 25.5cm'}
-            = button_to new_user_session_path, {:method => :get, class: 'btn btn-primary btn-primary', style: 'color:#ffffff; margin-top: 0.2cm' } do
-              %span{:class => 'glyphicon glyphicon-user'}
-              Login
-        
-        
+          - if user_signed_in?
+            %li
+              - if can? :manage, @sala
+                %a{:href => "/salas"}
+                  Salas
+                  %span.glyphicon.glyphicon-list.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'}
+            %li
+              - if can? :manage, @recurso
+                %a{:href => "/recursos"}
+                  Recursos
+                  %span.glyphicon.glyphicon-list.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
+
+            %ul.nav.navbar-nav.navbar-right{:style => 'margin-top: 0.375cm; margin-left: 1.5cm'}
+              =  current_user.name
+              %span.glyphicon.glyphicon-user.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
+            %li
+              %a{:href => "users/edit"}
+                Configurações da conta
+                %span.glyphicon.glyphicon-cog.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
+            %li.divider
+            %li
+              %a{:href => "/reservas"}
+                Minhas Reservas
+                %span.glyphicon.glyphicon-list.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
+            %li.divider
+            %li
+              %a{:href => "/agendas"}
+                Agenda
+                %span.glyphicon.glyphicon-calendar.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
+            %li.divider
+            %li
+              %a{:href => "/users/edit"}
+                Editar Conta 
+                %span.glyphicon.glyphicon-pencil.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
+            %li.divider
+            %li
+              = link_to destroy_user_session_path, {:method => :delete} do
+                Sair
+                %span.glyphicon.glyphicon-log-out.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
+          - else
+            - if can? :manage, @sala
+              %ul.nav.navbar-nav.navbar-right{:style => 'margin-left: 23cm; margin-top: 0.2cm'}
+                = button_to new_user_session_path, {:method => :get, class: 'btn btn-primary btn-primary', style: 'color:#ffffff'} do
+                  %span{:class => 'glyphicon glyphicon-user'}
+                  Login     
+            - else 
+              %ul.nav.navbar-nav.navbar-right{:style => 'margin-left: 23cm; margin-top: 0.2cm'}
+                = button_to new_user_session_path, {:method => :get, class: 'btn btn-primary btn-primary', style: 'color:#ffffff' } do
+                  %span{:class => 'glyphicon glyphicon-user'}
+                  Login
+            
+

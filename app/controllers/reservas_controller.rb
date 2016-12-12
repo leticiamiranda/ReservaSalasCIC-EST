@@ -18,7 +18,7 @@ class ReservasController < ApplicationController
             end
           end
         end
-     end
+      end
      
   end
 
@@ -74,6 +74,9 @@ class ReservasController < ApplicationController
       format.html { redirect_to reservas_url, notice: 'Reserva was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+  
+  def google_calendar
   end
 
   # private

@@ -2,7 +2,7 @@
 #   Como usuário
 #   Quero poder entrar
 #   Para visitar areas protegidas do site
-Feature: Entrar
+Feature: entrar
   Background: 
     Given I am on the home page
     When I press "Login"

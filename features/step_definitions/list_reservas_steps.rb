@@ -1,26 +1,3 @@
-Given (/I am registered as a user/) do 
-    @user = User.create({
-        :name => 'teste',
-        :email => 'teste@test.com',
-        :password => '123456',
-        :password_confirmation => '123456',
-        :confirmed_at => Time.now
-    })
-end
-
-Given (/My role is (.+)$/) do |my_role|
-    @user ||= User.find_by name: 'teste'
-    if(my_role == 'teacher')
-        @user.professor!
-    elsif(my_role == 'secretary')
-        @user.secretaria!
-    elsif (my_role == 'admin')
-        @user.admin!
-    else
-        @user.usuario!
-    end
-end
-
 When (/I visit (.+) page$/) do |webpage|
     visit '/' + webpage
 end

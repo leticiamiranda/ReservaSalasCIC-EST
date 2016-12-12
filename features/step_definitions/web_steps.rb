@@ -10,6 +10,30 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
+Given (/I am registered as a user/) do 
+    @user = User.create({
+        :role => :admin,
+        :name => 'teste',
+        :email => 'teste@test.com',
+        :password => '123456',
+        :password_confirmation => '123456',
+        :confirmed_at => Time.now
+    })
+end
+
+Given (/My role is (.+)$/) do |my_role|
+    @user ||= User.find_by name: 'teste'
+    if(my_role == 'teacher')
+        @user.professor!
+    elsif(my_role == 'secretary')
+        @user.secretaria!
+    elsif (my_role == 'admin')
+        @user.admin!
+    else
+        @user.usuario!
+    end 
+end
+
 Given (/^(?:|I )am on (.+)$/) do |page_name|
   visit path_to(page_name)
 end
@@ -34,6 +58,7 @@ end
 
 When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
+  #visit path_to('the cadastrar sala page')
 end
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|

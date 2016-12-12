@@ -26,11 +26,13 @@ class SalasController < ApplicationController
   # POST /salas.json
   def create
 
-    @sala_recuperada = Sala.find(params[:nome])
+    @sala_recuperada = Sala.find_by(params[:nome])
 
     if @sala_recuperada
-      format.html { redirect_to salas_url, notice: 'Sala não cadastrada. Existe outra sala com mesmo nome.' }
-      format.json { head :no_content }
+      respond_to do |format|
+        format.html { redirect_to salas_url, alert: 'Sala não cadastrada. Existe outra sala com mesmo nome.' }
+        format.json { head :no_content }
+      end
     else  
       @sala = Sala.new(sala_params)
 

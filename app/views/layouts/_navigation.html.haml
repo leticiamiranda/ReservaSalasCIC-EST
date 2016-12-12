@@ -20,18 +20,29 @@
         %a.navbar-brand{:href => "/reservas"} Home
       / Collect the nav links, forms, and other content for toggling
       #bs-example-navbar-collapse-1.collapse.navbar-collapse
-        %ul.nav.navbar-nav
-          %li
-          - if can? :manage, @sala
-            %a{:href => "/salas"}
-              Salas
-              %i.fa.fa-university{"aria-hidden" => "true"}
-          %li
-          - if can? :manage, @recurso
-            %a{:href => "/recursos"} Recursos
+        %ul.nav.navbar-nav{:style => 'margin-left: 1.5cm'}
+          /%li
+          /- if can? :manage, @sala
+          /  %a{:href => "/salas"}
+          /    Salas
+          /    %i.fa.fa-university{"aria-hidden" => "true"}
+          /%li
+          /- if can? :manage, @recurso
+          /  %a{:href => "/recursos"} Recursos
             
           %li
           - if user_signed_in?
+            %li
+              - if can? :manage, @sala
+                %a{:href => "/salas"}
+                  Salas
+                  %span.glyphicon.glyphicon-list.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'}
+            %li
+              - if can? :manage, @recurso
+                %a{:href => "/recursos"}
+                  Recursos
+                  %span.glyphicon.glyphicon-list.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
+
             %ul.nav.navbar-nav.navbar-right{:style => 'margin-top: 0.375cm; margin-left: 1.5cm'}
               =  current_user.name
               %span.glyphicon.glyphicon-user.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
@@ -61,13 +72,13 @@
                 %span.glyphicon.glyphicon-log-out.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
           - else
             - if can? :manage, @sala
-              %ul.nav.navbar-nav.navbar-right{:style => 'margin-left: 21cm'}
-                = button_to new_user_session_path, {:method => :get, class: 'btn btn-primary btn-primary', style: 'color:#ffffff; margin-top: 0.2cm' } do
+              %ul.nav.navbar-nav.navbar-right{:style => 'margin-left: 23cm; margin-top: 0.2cm'}
+                = button_to new_user_session_path, {:method => :get, class: 'btn btn-primary btn-primary', style: 'color:#ffffff'} do
                   %span{:class => 'glyphicon glyphicon-user'}
                   Login     
             - else 
-              %ul.nav.navbar-nav.navbar-right{:style => 'margin-left: 25cm'}
-                = button_to new_user_session_path, {:method => :get, class: 'btn btn-primary btn-primary', style: 'color:#ffffff; margin-top: 0.2cm' } do
+              %ul.nav.navbar-nav.navbar-right{:style => 'margin-left: 23cm; margin-top: 0.2cm'}
+                = button_to new_user_session_path, {:method => :get, class: 'btn btn-primary btn-primary', style: 'color:#ffffff' } do
                   %span{:class => 'glyphicon glyphicon-user'}
                   Login
             

@@ -27,15 +27,38 @@
               %span.sr-only (current)
           %li
             %a{:href => "/recursos"} Recursos
-          
-        - if user_signed_in?
-          %ul.nav.navbar-nav.navbar-right  
-            = button_to destroy_user_session_path, {:method => :delete, class: 'btn btn-danger', :style => 'margin-top: 0.2cm'} do
-              %span{:class => 'glyphicon glyphicon-off'}
-              Sair
-        - else
-          %ul.nav.navbar-nav.navbar-right  
-            = button_to new_user_session_path, {:method => :get, class: 'btn btn-primary btn-primary', style: 'color:#ffffff; margin-top: 0.2cm' } do
-              %span{:class => 'glyphicon glyphicon-user'}
-              Login        
+          %li
+          - if user_signed_in?
+            %li
+            =  current_user.name
+            %span.glyphicon.glyphicon-user.pull-right
+            %li
+              %a{:href => "users/edit"}
+                Configurações da conta
+                %span.glyphicon.glyphicon-cog.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
+            %li.divider
+            %li
+              %a{:href => "/reservas"}
+                Minhas Reservas
+                %span.glyphicon.glyphicon-list.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
+            %li.divider
+            %li
+              %a{:href => "/agendas"}
+                Agenda
+                %span.glyphicon.glyphicon-calendar.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
+            %li.divider
+            %li
+              %a{:href => "/users/edit"}
+                Editar Conta 
+                %span.glyphicon.glyphicon-pencil.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
+            %li.divider
+            %li
+              = link_to destroy_user_session_path, {:method => :delete} do
+                Sair
+                %span.glyphicon.glyphicon-log-out.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
+          - else
+            %ul.nav.navbar-nav.navbar-right  
+              = button_to new_user_session_path, {:method => :get, class: 'btn btn-primary btn-primary', style: 'color:#ffffff; margin-top: 0.2cm' } do
+                %span{:class => 'glyphicon glyphicon-user'}
+                Login        
           

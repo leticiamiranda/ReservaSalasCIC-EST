@@ -10,10 +10,10 @@ end
 
 When(/^fill the form$/) do
 	expect(page).to have_content "Nome"
-	fill_in 'nome', :with => "LARA"
-	fill_in 'Qtd lugares', :with => "20"
-	fill_in 'Disponivel', :with => "True"
-	click_button "Cadastrar sala"
+	fill_in 'sala_nome', :with => "LARA"
+	fill_in 'sala_qtd_lugares', :with => "20"
+	
+	click_button "Cadastrar"
 end
 
 Then(/^I Should see my register in the list$/) do
@@ -21,9 +21,11 @@ Then(/^I Should see my register in the list$/) do
 end
 
 Then (/^I should see a info message$/) do
-  page.should have_selector ".info", text: "Preecha este campo."
+  expect(page).to have_content "Preencha este campo."
 end
 
 Then (/^I see a alert message of access denied$/) do
 	expect(page).to have_selector ".alert", text: "Você não tem permissão para acessar essa página."
 end
+
+

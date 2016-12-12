@@ -5,7 +5,21 @@ class ReservasController < ApplicationController
   # GET /reservas
   # GET /reservas.json
   def index
-     @reservas = Reserva.fetch_next_reservas.items
+      @reservas = []
+      reservas = Reserva.fetch_next_reservas.items
+      @minhas_reservas_filter_chckd = params["minhas_reservas"]
+      if(@minhas_reservas_filter_chckd.nil?)
+        @reservas = reservas
+      else
+        if(!current_user.nil?)
+          reservas.each do |reserva|
+            if(reserva.description == "Reserva para: #{current_user[:name]}")
+              @reservas.push(reserva)
+            end
+          end
+        end
+      end
+     
   end
 
   # GET /reservas/1

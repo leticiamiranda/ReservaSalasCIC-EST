@@ -25,6 +25,12 @@ module NavigationHelpers
     when /^the cadastrar sala page/
       '/salas/new'
 
+    when /the recursos page/
+      '/recursos'
+    
+    when /^the cadastrar recurso page/
+      '/recursos/new'
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

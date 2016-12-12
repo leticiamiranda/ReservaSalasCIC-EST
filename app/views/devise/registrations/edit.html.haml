@@ -25,7 +25,7 @@
       .form-group
         = f.label 'Senha atual'
         = f.password_field :current_password, class: 'form-control'
-    = f.submit 'Atualizar cadastro', :class => 'button right'
+    = f.submit 'Atualizar dados', :class => 'button right'
 .authform
   %h3 Cancelar conta
   = button_to "Cancelar conta", registration_path(resource_name), :data => { :confirm => "Tem certeza?" }, :method => :delete, :class => 'button right'

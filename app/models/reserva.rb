@@ -3,6 +3,7 @@ require 'googleauth'
 require 'googleauth/stores/file_token_store'
 
 require 'fileutils'
+require 'date'
 
 class Reserva < ActiveRecord::Base
     
@@ -49,37 +50,21 @@ class Reserva < ActiveRecord::Base
         response
     end
     
-    # def self.make_reservation(sala, datetime)
-    #     initialize_google_calendar_api
-    #     event = Google::Apis::CalendarV3::Event.new{
-    #         summary: 'Reserva de sala: #{sala}',
-    #         location: sala,
-    #         description: '',
-    #         start: {
-    #             date_time: datetime,
-    #             time_zone: 'America/Sao_Paulo',
-    #         },
-    #         end: {
-    #             date_time: data,
-    #             time_zone: 'America/Sao_Paulo',
-    #         },
-    #         recurrence: [
-    #             'RRULE:FREQ=DAILY;COUNT=2'
-    #         ],
-    #         attendees: [
-    #             {email: 'reservasalascic.est@gmail.com'},
-    #         ],
-    #         reminders: {
-    #             use_default: false,
-    #             overrides: [
-    #                 {method' => 'email', 'minutes: 24 * 60},
-    #                 {method' => 'popup', 'minutes: 10},
-    #             ],
-    #         },
-    #     }
-            
-    #     response = @service.insert_event('primary', event)
-    #     # puts "Event created: #{result.html_link}"
-    #     response
-    # end
+    def self.make_reservation(datahoraInicio,datahoraFim,sala,professor)
+        initialize_google_calendar_api
+        event = Google::Apis::CalendarV3::Event.new({
+            summary: "Reserva de sala: #{sala}",
+            location: sala,
+            description: "Reserva para: #{professor}",
+            start: {
+                date_time: (DateTime.strptime(datahoraInicio, '%Y-%m-%dT%H:%M').to_time + 2.hours).to_datetime.rfc3339,
+                time_zone: 'America/Sao_Paulo',
+            },
+            end: {
+                date_time: (DateTime.strptime(datahoraFim, '%Y-%m-%dT%H:%M').to_time + 2.hours).to_datetime.rfc3339,
+                time_zone: 'America/Sao_Paulo',
+            },
+        })
+        @service.insert_event(@calendar_id, event)
+    end
 end

@@ -13,7 +13,7 @@ class Ability
     end
     if user.role? ('professor')
       can :create, Agenda
-      can :create, Reserva
+      can :manage, Reserva
     end
     if user.role? ('usuario')
       can :read, :all

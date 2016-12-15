@@ -1,5 +1,24 @@
-%h1 New reserva
-
-= render 'form'
-
-= link_to 'Back', reservas_path
+.container
+    %div{:class => "panel-group", :style => "margin-left:-0.35cm"}
+        %div{:class => "panel panel-primary"}
+            %div{:class => "panel-heading"} 
+                Inserir Reserva
+            %div{:class => "panel-body"}
+                %form{:method => 'post', :action => "insert"}
+                    %div{:class => "form-group"}
+                        = label_tag 'datahoraInicio', 'Começa em:'
+                        %input{:type => 'datetime-local', class: 'form-control', style: 'width:auto;', id: 'datahoraInicio', name: 'datahoraInicio'}
+                    %div{:class => "form-group"}
+                        = label_tag 'datahoraFim', 'Termina em:'
+                        %input{:type => 'datetime-local', class: 'form-control', style: 'width:auto;', id: 'datahoraFim', name: 'datahoraFim'}
+                    %div{:class => "form-group"}
+                        = label_tag 'sala', 'Sala:'
+                        = select_tag 'sala', options_from_collection_for_select(@salas, 'nome', 'nome'), class: 'form-control', style: 'width:auto;'
+                    - if current_user.role?('admin') or current_user.role?('secretaria')
+                        %div{:class => "form-group"}
+                            = label_tag 'professor', 'Professor:'
+                            = select_tag 'professor', options_from_collection_for_select(@professores, 'name', 'name'), class: 'form-control', style: 'width:auto;'
+                    = button_to 'Inserir',nil, class: 'btn btn-default'
+                
+                
+                

@@ -29,7 +29,18 @@ class ReservasController < ApplicationController
 
   # GET /reservas/new
   def new
-    @reserva = Reserva.new
+    @salas = Sala.all
+    @professores = User.where({:role => :professor})
+  end
+  
+  # POST /reservas/insert
+  def insert
+    if(params[:professor].nil?)
+      Reserva.make_reservation(params[:datahoraInicio],params[:datahoraFim],params[:sala],current_user.name)
+    else
+      Reserva.make_reservation(params[:datahoraInicio],params[:datahoraFim],params[:sala],params[:professor])
+    end
+    redirect_to reservas_path
   end
 
   # GET /reservas/1/edit
@@ -39,17 +50,17 @@ class ReservasController < ApplicationController
   # POST /reservas
   # POST /reservas.json
   def create
-    @reserva = Reserva.new(reserva_params)
+    # @reserva = Reserva.new(reserva_params)
 
-    zrespond_to do |format|
-      if @reserva.save
-        format.html { redirect_to @reserva, notice: 'Reserva was successfully created.' }
-        format.json { render :show, status: :created, location: @reserva }
-      else
-        format.html { render :new }
-        format.json { render json: @reserva.errors, status: :unprocessable_entity }
-      end
-    end
+    # zrespond_to do |format|
+    #   if @reserva.save
+    #     format.html { redirect_to @reserva, notice: 'Reserva was successfully created.' }
+    #     format.json { render :show, status: :created, location: @reserva }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @reserva.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /reservas/1
@@ -79,14 +90,14 @@ class ReservasController < ApplicationController
   def google_calendar
   end
 
-  # private
-  #   # Use callbacks to share common setup or constraints between actions.
-  #   def set_reserva
-  #     @reserva = Reserva.find(params[:id])
-  #   end
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_reserva
+      @reserva = Reserva.find(params[:id])
+    end
 
-  #   # Never trust parameters from the scary internet, only allow the white list through.
-  #   def reserva_params
-  #     params.require(:reserva).permit(:data)
-  #   end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def reserva_params
+      params.require(:datahoraInicio, :datahoraFim, :professor, :sala)
+    end
 end

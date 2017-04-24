@@ -28,4 +28,6 @@
                                 %td #{reserva.start.date_time.strftime("%d/%m/%Y às %H:%M")} a #{reserva.end.date_time.strftime("%d/%m/%Y às %H:%M")}
                                 %td= link_to('Ver reserva no Google Calendar',reserva.html_link)
                         %end
+                = link_to 'Criar Reserva', new_reserva_path, :type => 'button', :class => 'btn btn-danger pull-right'
+
 

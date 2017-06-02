@@ -1,60 +1,51 @@
 -# navigation styled for Bootstrap 3.0
-.container
-  %nav.navbar.navbar-primary
-    = link_to image_tag("logo2.png"), root_path, class: 'navbar-brand', style: 'background-color:#ffffff'
-    %ul.nav.navbar-nav.clearfix
-      %li.nav-item
-        = link_to "Reserva de Salas CIC/EST", root_path, class: 'h3', style: 'color:#19367a; background-color:#ffffff;'
-  %hr
-  %ul.nav.navbar-nav= render 'layouts/navigation_links'
-
-  %nav.navbar.navbar-default
-    .navbar-header
-      %a.navbar-brand{:href => "/reservas"} Home
-      %ul.nav.navbar-nav
-        %li
+%header#main-header.clearfix
+  %div#header-full.clearfix
+    %div#header.clearfix
+      %a.open-menu{:href => "#nav"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to image_tag("logo2.png"), root_path, id: 'logo'
+  %nav#nav.clearfix
+    %a.close-menu-big{:href => "#"}
+    %div#nav-container
+      %a.close-menu{:href => "#"}
+      %ul#nav-main
+        %li.menu
+          %a{:href => "/reservas"} Home
+        %li.menu
           - if can? :manage, @sala
-            %a{:href => "/salas"}
-              Salas
-              %span.glyphicon.glyphicon-map-marker
-        %li
+            %a{:href => "/salas"} Salas
+        %li.menu
           - if can? :manage, @recurso
-            %a{:href => "/recursos"}
-              Recursos
-              %span.glyphicon.glyphicon-signal
-        %li
-        - if user_signed_in?
-          %ul.nav.navbar-nav.navbar-right{:style => 'margin-top: 0.375cm; margin-left: 1.5cm'}
-            =  current_user.name
-            %span.glyphicon.glyphicon-user.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
-          %li
-            %a{:href => "users/edit"}
+            %a{:href => "/recursos"} Recursos
+        - if user_signed_in?    
+          %li.menu
+            %a{:href => "#"} 
+              = current_user.name
+              %span.glyphicon.glyphicon-user.pull-right
+          %li.menu
+            %a{:href => "users/edit"} 
               Configurações da conta
-              %span.glyphicon.glyphicon-cog.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
-          %li.divider
-          %li
+              %span.glyphicon.glyphicon-cog.pull-right 
+          %li.menu
             %a{:href => "/reservas?utf8=✓&minhas_reservas=1&commit=Filtrar"}
               Minhas Reservas
-              %span.glyphicon.glyphicon-list.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
-          %li.divider
-          %li
+              %span.glyphicon.glyphicon-list.pull-right
+          %li.menu
             %a{:href => "/agendas"}
               Agenda
-              %span.glyphicon.glyphicon-calendar.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
-          %li.divider
-          %li
+              %span.glyphicon.glyphicon-calendar.pull-right
+          %li.menu
             %a{:href => "/users/edit"}
               Editar Conta 
-              %span.glyphicon.glyphicon-pencil.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
-          %li.divider
-          %li
+              %span.glyphicon.glyphicon-pencil.pull-right
+          %li.menu
             = link_to destroy_user_session_path, {:method => :delete} do
               Sair
-              %span.glyphicon.glyphicon-log-out.pull-right{:style => 'margin-top: 0.1cm; margin-left: 0.15cm'} 
+              %span.glyphicon.glyphicon-log-out.pull-right
         - else
-          %ul.nav.navbar-nav.navbar-right{:style => 'margin-left: 25.5cm'}
-            = button_to new_user_session_path, {:method => :get, class: 'btn btn-primary btn-primary', style: 'color:#ffffff; margin-top: 0.2cm' } do
-              %span{:class => 'glyphicon glyphicon-user'}
+          %li{style: 'float: right'}
+            = button_to new_user_session_path, {:method => :get, class: 'button alignright'} do
               Login
-        
-        

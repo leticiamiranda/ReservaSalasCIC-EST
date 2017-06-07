@@ -2464,6 +2464,23 @@ html[xmlns] .slides {display: block;}
   border-bottom:1px solid #fff;
   margin:0;
 }
+
+.panel-heading {
+  background-color:#364559;
+  background-image: linear-gradient(top, #364559, #475a74);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#364559), to(#475a74));
+  background-image: -webkit-linear-gradient(top, #364559, #475a74);
+  background-image: -moz-linear-gradient(top, #364559, #475a74);
+  background-image: -ms-linear-gradient(top, #364559, #475a74);
+  background-image: -o-linear-gradient(top, #364559, #475a74);
+  padding:12px 20px;
+  font-size:16px;
+  color:#fff;
+  text-transform:uppercase;
+  font-weight:normal;
+  border-bottom:1px solid #fff;
+  margin:0;
+}
 #sidebar .widget-title {
   margin-left:-20px;
   width:260px

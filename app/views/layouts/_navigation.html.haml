@@ -14,37 +14,27 @@
       %ul#nav-main
         %li.menu
           %a{:href => "/reservas"} Home
-        %li.menu
-          - if can? :manage, @sala
-            %a{:href => "/salas"} Salas
-        %li.menu
-          - if can? :manage, @recurso
-            %a{:href => "/recursos"} Recursos
         - if user_signed_in?    
           %li.menu
-            %a{:href => "#"} 
+            %a
               = current_user.name
-              %span.glyphicon.glyphicon-user.pull-right
           %li.menu
-            %a{:href => "users/edit"} 
-              Configurações da conta
-              %span.glyphicon.glyphicon-cog.pull-right 
+            %a{:href => "users/edit"} Configurações da conta
           %li.menu
-            %a{:href => "/reservas?utf8=✓&minhas_reservas=1&commit=Filtrar"}
-              Minhas Reservas
-              %span.glyphicon.glyphicon-list.pull-right
+            %a{:href => "/reservas?utf8=✓&minhas_reservas=1&commit=Filtrar"} Minhas Reservas
           %li.menu
-            %a{:href => "/agendas"}
-              Agenda
-              %span.glyphicon.glyphicon-calendar.pull-right
+            %a{:href => "/agendas"} Agenda
           %li.menu
-            %a{:href => "/users/edit"}
-              Editar Conta 
-              %span.glyphicon.glyphicon-pencil.pull-right
+            - if can? :manage, @sala
+              %a{:href => "/salas"} Salas
+          %li.menu
+            - if can? :manage, @recurso
+              %a{:href => "/recursos"} Recursos  
+          %li.menu
+            %a{:href => "/users/edit"} Editar Conta 
           %li.menu
             = link_to destroy_user_session_path, {:method => :delete} do
               Sair
-              %span.glyphicon.glyphicon-log-out.pull-right
         - else
           %li{style: 'float: right'}
             = button_to new_user_session_path, {:method => :get, class: 'button alignright'} do

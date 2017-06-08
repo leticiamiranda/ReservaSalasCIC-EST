@@ -15,6 +15,7 @@ gem 'cancan'
 gem 'bower-rails'
 gem 'font-awesome-rails'
 gem 'cancancan'
+gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
   gem 'byebug' , platform: :mri

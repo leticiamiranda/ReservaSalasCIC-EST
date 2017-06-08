@@ -17,7 +17,7 @@
                     - if current_user.role?('admin') or current_user.role?('secretaria')
                         %div{:class => "form-group"}
                             = label_tag 'professor', 'Professor:'
-                            = select_tag 'professor', options_from_collection_for_select(@professores, 'name', 'name'), class: 'form-control', style: 'width:auto;'
+                            = select_tag 'professor', options_from_collection_for_select(@users, 'name', 'name'), class: 'form-control', style: 'width:auto;'
                     = button_to 'Inserir',nil, class: 'btn btn-default'
                 
                 

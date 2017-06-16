@@ -37,6 +37,8 @@ module RailsDeviseRoles
     #config.active_record.raise_in_transactional_callbacks = true
     config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     
+    config.serve_static_assets = true
+    
   end
 end
 

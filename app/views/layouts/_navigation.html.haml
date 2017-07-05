@@ -15,11 +15,9 @@
         %li.menu
           %a{:href => "/reservas"} Home
         - if user_signed_in?    
-          %li.menu
-            %a
-              = current_user.name
-          %li.menu
-            %a{:href => "users/edit"} Configurações da conta
+          // %li.menu
+          //   %a
+          //     = current_user.name
           %li.menu
             %a{:href => "/reservas?utf8=✓&minhas_reservas=1&commit=Filtrar"} Minhas Reservas
           %li.menu
@@ -31,7 +29,10 @@
             - if can? :manage, @recurso
               %a{:href => "/recursos"} Recursos  
           %li.menu
-            %a{:href => "/users/edit"} Editar Conta 
+            %a{:href => "/users/edit"} Configurações da conta
+          %li.menu
+            - if current_user.try(:admin?)
+              %a{:href => "/users"} Papéis de Usuário
           %li.menu
             = link_to destroy_user_session_path, {:method => :delete} do
               Sair

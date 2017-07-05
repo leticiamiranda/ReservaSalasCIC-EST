@@ -1,20 +1,21 @@
 .authform
   = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f|
-    %h3 Entrar
+    %h3.sign-in-title
+      Entrar
     = devise_error_messages!
     .form-group
       - if devise_mapping.registerable?
-        = link_to 'Registrar-se', new_registration_path(resource_name), class: 'right', style: 'background-color:#E8E8E8'
+        = link_to 'Registrar-se', new_registration_path(resource_name), class: 'right link-to'
       = f.label :email
       = f.email_field :email, :autofocus => true, class: 'form-control'
     .form-group
       - if devise_mapping.recoverable?
-        = link_to "Esqueceu a senha?", new_password_path(resource_name), class: 'right', style: 'background-color:#E8E8E8'
+        = link_to "Esqueceu a senha?", new_password_path(resource_name), class: 'right link-to'
       = f.label :senha
       = f.password_field :password, class: 'form-control'
-    = f.submit 'Entrar', class: 'btn btn-primary btn-lg'
+    = f.submit 'Entrar', class: 'button button-sign-in'
     - if devise_mapping.rememberable?
-      .checkbox{:style => "width:150px"}
+      .checkbox{:style => "width:100%"}
         %label
-          = f.check_box :remember_me
+          = f.check_box :remember_me, class: 'checkbox-form'
           Lembrar-me

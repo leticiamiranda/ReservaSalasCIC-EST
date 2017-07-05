@@ -276,9 +276,6 @@ ul.tabs-widget li a,
   position:fixed;
   z-index:1000;
 }
-.home #main-header {
-  margin-top:8px;
-}
 #header-full {
   width:100%;
   min-width:1185px;
@@ -4091,4 +4088,17 @@ text-decoration: none;
 
 .table th {
   vertical-align: middle;
+  z-index: 1000;
+  position: relative;
+}
+
+.img-cic-est {
+  position:relative;
+  width:100%;
+  height:200px;
+  overflow:hidden;
+}
+.img-cic-est img {
+  position:absolute;
+  bottom:0;
 }

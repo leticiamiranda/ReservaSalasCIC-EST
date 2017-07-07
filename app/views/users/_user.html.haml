@@ -4,4 +4,5 @@
   = form_for(user) do |f|
     = f.select(:role, User.roles.keys.map {|role| [role.titleize,role]})
     = f.submit 'Trocar papel do usuário', :class => 'btn btn-primary'
-    = button_to("Deletar usuário", user_path(user), :data => { :confirm => "Tem certeza?" }, :method => :delete, :class => 'btn btn-danger') unless user == current_user
+%td   
+  = button_to("Deletar usuário", user_path(user), :data => { :confirm => "Tem certeza?" }, :method => :delete, :class => 'btn btn-danger') unless user == current_user

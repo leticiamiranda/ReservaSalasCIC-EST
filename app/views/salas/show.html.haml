@@ -1,15 +1,19 @@
-//%p#notice= notice
-
-%p.row		
-  %b.col-md-1 Nome:
-  = @sala.nome
-%p.row		
-  %b.col-md-1 Lugares:
-  = @sala.qtd_lugares
-%p.row		
-  %b.col-md-1 Disponivel:
-  = @sala.disponivel
-
-= link_to 'Editar', edit_sala_path(@sala)
-\|
-= link_to 'Voltar', salas_path
+.container
+  .row
+    %h3.sign-in-title Sala
+    %table.table
+      %thead
+        %th Nome
+        %th Número de Lugares
+        %th Disponível
+      %tbody
+        %tr
+          %td= @sala.nome
+          %td= @sala.qtd_lugares
+          - if @sala.disponivel?
+            %td
+              %span{:class => 'glyphicon glyphicon-ok', :align => "center"}
+          - else
+            %td 
+              %span{:class => 'glyphicon glyphicon-remove', :align => "center"}
+  = link_to 'Voltar', salas_path, style: 'float: right'

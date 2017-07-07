@@ -1,7 +1,14 @@
-%h1 Editar sala
-
-= render 'form'
-
-//= link_to 'Show', @sala
-//\|
-//= link_to 'Back', salas_path
+.authform
+  %h3.title-form
+    Editar Sala
+  = form_for @sala do |f|
+    .form-group
+      = f.label :nome
+      = f.text_field :nome, :required => true, class: 'form-control'
+    .form-group
+      = f.label 'Número de Lugares'
+      = f.number_field :qtd_lugares, :required => true, :min => "1", class: 'form-control'
+    .form-group 
+      = f.label 'Disponível'
+      = f.check_box :disponivel, :required => true, class: 'checkbox-form', style: 'margin-left: 10px'
+    = f.submit 'Atualizar recurso', :class => 'button right'

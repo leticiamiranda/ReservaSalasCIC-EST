@@ -1,11 +1,9 @@
 .container
   .row
-    %h3 Usuários
-    .column
-      %table.table
-        %tbody
-          - @users.each do |user|
-            %tr
-              = render user
-%div
-  %li.nav-item= link_to 'Sair', destroy_user_session_path, :method=>'delete', class: 'nav-link'
+    %h3.sign-in-title Usuários
+    %table.table
+      %tbody
+        - @users.each do |user|
+          %tr
+            = render user
+

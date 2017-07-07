@@ -10,9 +10,9 @@
     = csrf_meta_tags
     = render 'layouts/navigation'
   %body{:class => "home page"}
-    %main#main{:role => "main"}
-      = render 'layouts/messages'
-      = yield
+  %main#main{:role => "main"}
+    = render 'layouts/messages'
+    = yield
   %footer.footer#main-footer
     %div#footer-copyright
       %div#footer-copyright-content.clearfix

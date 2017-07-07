@@ -1,13 +1,13 @@
-//%p#notice= notice
-
-%p.row		
-  %b.col-md-1 Nome:
-  = @recurso.nome
-%p.row
-  %b.col-md-1 Qtdade.:
-  = @recurso.qtd
-
-
-= link_to 'Editar', edit_recurso_path(@recurso)
-\|
-= link_to 'Voltar', recursos_path
+.container
+  .row
+    %h3.sign-in-title Recurso
+    %table.table
+      %thead
+        %th Nome
+        %th Quantidade
+      %tbody
+        %tr
+          %td= @recurso.nome
+          %td= @recurso.qtd
+  
+  = link_to 'Voltar', recursos_path, style: 'float: right'

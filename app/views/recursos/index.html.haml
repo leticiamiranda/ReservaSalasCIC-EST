@@ -1,32 +1,35 @@
 .container
-%div{:class => "panel-group", :style => "margin-left:-0.35cm"}
-    %div{:class => "panel panel-primary"}
-        %div{:class => "panel-heading"} 
-            Recursos
-        %div{:class => "panel-body"}
-        - if @recursos.empty?
-            %center Nenhum recurso cadastrado
-        - else
-        %table{:class => "table table-striped table-list table-hover"}
-            %thead
-                %tr
-                    %th Sala
-                    %th Nome
-                    %th Quantidade
-                    %th
-                    %th
-                    %th
-            %tbody
-                - @recursos.each do |recurso|
-                    %tr
-                        %td= recurso.sala.nome
-                        %td= recurso.nome
-                        %td= recurso.qtd
-                        %td= link_to 'Detalhes', recurso
-                        %td= link_to 'Editar', edit_recurso_path(recurso)
-                        %td= link_to 'Remover', recurso, :method => :delete, :data => { :confirm => 'Você tem certeza que deseja remover esse recurso?' }
+    %div{:class => "panel-group", :style => "margin-left:-0.35cm"}
+        %div{:class => "panel panel-primary"}
+            %div{:class => "panel-heading"} 
+                .row
+                    .col.col-xs-6
+                        %h3.panel-title Recursos
+                    .col.col-xs-6.text-right
+                        = button_to new_recurso_path, {:method => :get, class: 'btn btn-sm btn-default', :type => "button"} do
+                            %span{:class => 'glyphicon glyphicon-plus'}
+                            Novo
+            %div{:class => "panel-body table-responsive"}
+                %table{:class => "table table-striped table-list table-hover", :name => 'salas'}
+                    %thead
+                        %th Sala
+                        %th Nome 
+                        %th Quantidade
+                        %th 
+                            %span{:class => 'glyphicon glyphicon-cog', :style => "text-align: center"}   
+                    %tbody
+                        - @recursos.each do |recurso|
+                            %tr
+                                %td= recurso.sala.nome
+                                %td= recurso.nome
+                                %td= recurso.qtd
+                                %td
+                                    %div{:class => 'btn-group'}
+                                        = link_to recurso,{:class => 'btn btn-default', :type => 'button', :method => :get} do
+                                            %span{:class => 'glyphicon glyphicon-eye-open'}
+                                        = link_to edit_recurso_path(recurso),{:class => 'btn btn-default', :type => 'button',:method => :get} do
+                                            %span{:class => 'glyphicon glyphicon-pencil'} 
+                                        = link_to recurso,{:method => :delete, :class => 'btn btn-danger', :type => 'button'} do
+                                            %span{:class => 'glyphicon glyphicon-trash'}    
+                        %end
 
-%br
-
-= link_to 'Cadastrar recurso', new_recurso_path
-   

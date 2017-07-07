@@ -1,6 +1,14 @@
-%h1 Novo recurso
-
-= render 'form'
-
-
-
+.authform
+  %h3.title-form
+    Novo Recurso
+  = form_for @recurso do |f|
+    .form-group
+      = f.label :sala
+      = collection_select(:recurso, :sala_id, Sala.all, :id, :nome, :required => true)
+    .form-group
+      = f.label :nome
+      = f.text_field :nome, :required => true, class: 'form-control'
+    .form-group
+      = f.label :quantidade
+      = f.number_field :qtd, :required => true, :min => "1", class: 'form-control'
+    = f.submit 'Criar recurso', :class => 'button right'

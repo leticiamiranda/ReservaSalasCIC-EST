@@ -16,14 +16,19 @@
                         %th Numero de lugares
                         %th Disponível
                         %th 
-                            %span{:class => 'glyphicon glyphicon-cog', :align => "center"}   
+                            %span{:class => 'glyphicon glyphicon-cog', :style => "text-align: center"}   
                     %tbody
                         - @salas.each do |sala|
                             %tr
                                 %col{:width => '150'}
                                 %td= sala.nome
                                 %td= sala.qtd_lugares
-                                %td= sala.disponivel
+                                - if sala.disponivel?
+                                    %td
+                                        %span{:class => 'glyphicon glyphicon-ok', :align => "center"}
+                                - else
+                                    %td 
+                                        %span{:class => 'glyphicon glyphicon-remove', :align => "center"}
                                 %td
                                     %div{:class => 'btn-group'}
                                         = link_to sala,{:class => 'btn btn-default', :type => 'button', :method => :get} do

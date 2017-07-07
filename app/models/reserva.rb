@@ -57,11 +57,11 @@ class Reserva < ActiveRecord::Base
             location: sala,
             description: "Reserva para: #{professor}",
             start: {
-                date_time: (DateTime.strptime(datahoraInicio, '%Y-%m-%dT%H:%M').to_time + 2.hours).to_datetime.rfc3339,
+                date_time: (DateTime.strptime(datahoraInicio, '%Y-%m-%dT%H:%M').to_time + 3.hours).to_datetime.rfc3339,
                 time_zone: 'America/Sao_Paulo',
             },
             end: {
-                date_time: (DateTime.strptime(datahoraFim, '%Y-%m-%dT%H:%M').to_time + 2.hours).to_datetime.rfc3339,
+                date_time: (DateTime.strptime(datahoraFim, '%Y-%m-%dT%H:%M').to_time + 3.hours).to_datetime.rfc3339,
                 time_zone: 'America/Sao_Paulo',
             },
         })

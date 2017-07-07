@@ -1,7 +1,7 @@
 .authform
   = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :role => 'form'}) do |f|
-    %h3 Esqueceu a senha?
-    %p Nós enviaremos instruções de como alterar a sua senha.
+    %h3.title-form Esqueceu a senha?
+    %p.p-form Nós enviaremos instruções de como alterar a sua senha.
     = devise_error_messages!
     .form-group
       = f.label :email

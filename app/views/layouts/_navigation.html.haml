@@ -2,22 +2,18 @@
 %header#main-header.clearfix
   %div#header-full.clearfix
     %div#header.clearfix
-      %a.open-menu{:href => "#nav"}
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
       = link_to image_tag("logo2.png"), root_path, id: 'logo'
   %nav#nav.clearfix
-    %a.close-menu-big{:href => "#"}
     %div#nav-container
-      %a.close-menu{:href => "#"}
       %ul#nav-main
-        %li.menu
-          %a{:href => "/reservas"} Home
+        - if not user_signed_in?
+          %li.menu{style: 'float: left'}
+            = button_to reservas_path, {:method => :get, class: 'button'} do
+              Home
+        - else 
+          %li.menu
+            %a{:href => "/reservas"} Home
         - if user_signed_in?    
-          // %li.menu
-          //   %a
-          //     = current_user.name
           %li.menu
             %a{:href => "/reservas?utf8=✓&minhas_reservas=1&commit=Filtrar"} Minhas Reservas
           %li.menu
@@ -33,14 +29,10 @@
           %li.menu
             - if current_user.try(:admin?)
               %a{:href => "/users"} Papéis de Usuário
-          %li.menu
+          %li.menu#out
             = link_to destroy_user_session_path, {:method => :delete} do
               Sair
         - else
           %li{style: 'float: right'}
             = button_to new_user_session_path, {:method => :get, class: 'button alignright'} do
               Login
-// %div#slideshow-tabs
-//   #panel-1.ui-tabs-panel{:style => "background:url(http://www.cic.unb.br/wp-content/uploads/2016/03/cic-est.jpg) no-repeat 50% 0"}
-//     .tabs-blur{:style => "background:url(http://www.cic.unb.br/wp-content/uploads/2016/03/cic-est.jpg) no-repeat 50% 0"}
-// = image_tag("cic-est.jpg", class: 'img-cic-est')

@@ -1,5 +1,14 @@
-%h1 Nova sala
-
-= render 'form'
-
-
+.authform
+  %h3.title-form
+    Nova Sala
+  = form_for @sala do |f|
+    .form-group
+      = f.label :nome
+      = f.text_field :nome, :required => true, class: 'form-control'
+    .form-group
+      = f.label 'Número de Lugares'
+      = f.number_field :qtd_lugares, :required => true, :min => "1", class: 'form-control'
+    .form-group 
+      = f.label 'Disponível'
+      = f.check_box :disponivel, :required => true, class: 'checkbox-form', style: 'margin-left: 10px'
+    = f.submit 'Criar Sala', :class => 'button right'

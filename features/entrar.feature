@@ -5,8 +5,15 @@
 Feature: entrar
   Background: 
     Given I am on the home page
-    When I press "Login"
+    And I am not logged in
+    Then I should see "Saiu com sucesso"
+    Then I should see "Próximas Reservas"
+    When I go to the sign in page
     Then I should see "Entrar"
+    Then I should see "Registrar-se"
+    Then I should see "Email"
+    Then I should see "Esqueceu a senha?"
+    Then I should see "Senha"
     And I should not see "Sair"
     
     

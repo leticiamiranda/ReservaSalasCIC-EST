@@ -58,7 +58,6 @@ end
 
 When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
-  #visit path_to('the cadastrar sala page')
 end
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|

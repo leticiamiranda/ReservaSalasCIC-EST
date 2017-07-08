@@ -11,13 +11,13 @@ When(/^fill the form$/) do
 	fill_in 'sala_nome', :with => "LARA"
 	fill_in 'sala_qtd_lugares', :with => "20"
 	
-	click_button "Cadastrar"
+	click_button "Criar Sala"
 end
 
 When(/^fill the form again with sala with same name$/) do
 	fill_in 'sala_nome', :with => "LARA"
 	fill_in 'sala_qtd_lugares', :with => "20"
-	click_button "Cadastrar"
+	click_button "Criar Sala"
 end
 
 Then(/^I Should see my register in the list$/) do

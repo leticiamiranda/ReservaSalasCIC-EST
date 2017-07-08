@@ -10,14 +10,14 @@ Feature: Add sala
 		Given My role is teacher
 		And I am logged in
 		When I am on the salas page
-		And I follow "Cadastrar sala"
+		And I press "Criar nova"
 		Then I see a alert message of access denied
 
 	Scenario: Add Sala, with permission
 		Given My role is admin
 		And I am logged in
 		When I am on the salas page
-		And I follow "Cadastrar sala"
+		And I press "Criar nova"
 		Then I will be on cadastrar sala page
 		When fill the form
 		Then I Should see my register in the list
@@ -26,7 +26,7 @@ Feature: Add sala
 		Given My role is secretary
 		And I am logged in
 		When I am on the salas page
-		And I follow "Cadastrar sala"
+		And I press "Criar nova"
 		Then I am on the cadastrar sala page
 		When fill the form 
 		Then I Should see my register in the list
@@ -35,11 +35,11 @@ Feature: Add sala
 		Given My role is secretary
 		And I am logged in
 		When I am on the salas page
-		And I follow "Cadastrar sala"
+		And I press "Criar nova"
 		Then I am on the cadastrar sala page
 		When fill the form
 		Then I am on the salas page
-		And I follow "Cadastrar sala"
+		And I press "Criar nova"
 		And fill the form again with sala with same name 
 		Then I see a alert message
 

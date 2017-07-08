@@ -84,7 +84,6 @@ When(/^I return to the site$/) do
 end
 
 Then(/^I should be signed in$/) do
-  expect(page).to have_content "Sair"
   expect(page).to_not have_content "Entrar"
   expect(page).to_not have_content "Registrar-se"
 end

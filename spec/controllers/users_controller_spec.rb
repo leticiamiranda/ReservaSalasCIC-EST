@@ -15,17 +15,17 @@ describe UsersController do
         get :index
         expect(response).not_to be_success
       end
-      it "nao deve funcionar o :get show para usuario normal" do
-        get :show
-        expect(response).not_to be_success
+      it "deve funcionar o :get show para usuario normal" do
+        get :show, id: 1
+        expect(response).to be_success
       end
       it "nao deve funcionar o :get edit para usuario normal" do
-        get :edit
+        get :edit, id: 1
         expect(response).not_to be_success
       end
       
   end
-  describe 'testes para admin' do
+  describe 'testes para usuario admin' do
     before :each do
         @request.env["devise.mapping"] = Devise.mappings[:users]
         user = FactoryGirl.create(:user, :admin)
@@ -39,11 +39,11 @@ describe UsersController do
         expect(subject.current_user).to_not eq(nil)
       end
       it "deve funcionar o :get show para usuario admin" do
-        get :show
+        get :show, id: 1
         expect(response).to be_success
       end
-      it "deve funcionar o :get edit para usuario admin" do
-        get :edit
+      it "deve funcionar o :get edit somente para usuario admin" do
+        get :edit, id: 1
         expect(response).to be_success
       end
   end
